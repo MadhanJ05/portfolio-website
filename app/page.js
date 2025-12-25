@@ -150,32 +150,27 @@ export default function Portfolio() {
   };
 
   return (
-    <div className="min-h-screen bg-black text-white relative">
-      {/* Background Image */}
+    <div className="min-h-screen bg-white text-gray-800 relative">
+      {/* Background */}
       <div className="hero-bg" />
-      
-      {/* Vignette Effect */}
-      <div className="vignette" />
-      
-      {/* Noise Texture */}
-      <div className="noise-overlay" />
+      <div className="bg-pattern" />
       
       {/* Scroll Progress Bar */}
       <div className="scroll-progress" style={{ width: `${scrollProgress}%` }} />
 
       {/* Mouse Glow Effect */}
       <div 
-        className="fixed inset-0 pointer-events-none z-0 transition-opacity duration-300"
+        className="fixed inset-0 pointer-events-none z-0 transition-opacity duration-500"
         style={{
-          background: `radial-gradient(800px circle at ${mousePosition.x}px ${mousePosition.y}px, rgba(255, 255, 255, 0.03), transparent 40%)`
+          background: `radial-gradient(600px circle at ${mousePosition.x}px ${mousePosition.y}px, rgba(212, 175, 55, 0.04), transparent 40%)`
         }}
       />
 
       {/* Navigation */}
-      <nav className="fixed top-0 w-full glass-strong z-50 border-b border-white/10">
+      <nav className="fixed top-0 w-full glass-strong z-50 border-b border-yellow-500/10 shadow-sm">
         <div className="max-w-6xl mx-auto px-6 py-4">
           <div className="flex justify-between items-center">
-            <div className="text-2xl font-bold gradient-text cursor-pointer hover:scale-110 transition-transform duration-500">
+            <div className="text-3xl font-bold gradient-gold cursor-pointer hover:scale-110 transition-transform duration-500 animate-glow-gold">
               MJ
             </div>
             
@@ -184,8 +179,8 @@ export default function Portfolio() {
                 <a
                   key={item}
                   href={`#${item.toLowerCase()}`}
-                  className={`nav-link text-sm tracking-wider uppercase py-1 transition-colors duration-300 ${
-                    activeSection === item.toLowerCase() ? 'text-white active' : 'text-gray-400'
+                  className={`nav-link text-sm tracking-wider uppercase py-1 font-medium ${
+                    activeSection === item.toLowerCase() ? 'active text-yellow-600' : ''
                   }`}
                 >
                   {item}
@@ -194,10 +189,10 @@ export default function Portfolio() {
             </div>
 
             <button 
-              className="md:hidden p-2 hover:bg-white/10 rounded-lg transition-colors"
+              className="md:hidden p-2 hover:bg-yellow-500/10 rounded-lg transition-colors"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             >
-              {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+              {mobileMenuOpen ? <X className="w-6 h-6 text-yellow-600" /> : <Menu className="w-6 h-6 text-yellow-600" />}
             </button>
           </div>
 
@@ -207,7 +202,7 @@ export default function Portfolio() {
                 <a
                   key={item}
                   href={`#${item.toLowerCase()}`}
-                  className="text-gray-400 hover:text-white transition-colors duration-300 pl-4 border-l border-transparent hover:border-white text-sm tracking-wider uppercase"
+                  className="text-gray-600 hover:text-yellow-600 transition-colors duration-300 pl-4 border-l-2 border-transparent hover:border-yellow-500 text-sm tracking-wider uppercase font-medium"
                   style={{ animationDelay: `${idx * 50}ms` }}
                   onClick={() => setMobileMenuOpen(false)}
                 >
@@ -223,39 +218,44 @@ export default function Portfolio() {
       <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden pt-20">
         <div className="max-w-5xl mx-auto px-6 text-center relative z-10">
           <div className={`mb-8 ${visibleSections.has('home') ? 'animate-slide-up' : 'opacity-0'}`}>
-            <div className="inline-flex items-center gap-3 px-5 py-2 bg-white/5 rounded-full border border-white/10 hover:bg-white/10 hover:border-white/20 transition-all duration-500 cursor-default">
-              <Sparkles className="w-4 h-4 text-white/70" />
-              <span className="text-white/70 text-sm tracking-widest uppercase">Data Science & Analytics</span>
+            <div className="inline-flex items-center gap-3 px-6 py-3 bg-gradient-to-r from-yellow-50 to-blue-50 rounded-full border border-yellow-200 hover:border-yellow-400 hover:shadow-lg hover:shadow-yellow-500/20 transition-all duration-500 cursor-default">
+              <Sparkles className="w-5 h-5 text-yellow-500 animate-pulse" />
+              <span className="text-gray-600 text-sm tracking-widest uppercase font-medium">Data Science & Analytics</span>
+              <Sparkles className="w-5 h-5 text-blue-500 animate-pulse" />
             </div>
           </div>
           
-          <h1 className={`text-6xl md:text-8xl font-bold mb-6 tracking-tight ${visibleSections.has('home') ? 'animate-slide-up delay-100' : 'opacity-0'}`}>
-            <span className="gradient-text">Madhan</span>
-            <br />
-            <span className="text-white">Jothimani</span>
-          </h1>
+          {/* Name with Mirror Effect */}
+          <div className={`mb-8 ${visibleSections.has('home') ? 'animate-slide-up delay-100' : 'opacity-0'}`}>
+            <h1 className="text-6xl md:text-8xl font-bold tracking-tight mb-2">
+              <span className="mirror-text gradient-gold animate-glow-gold" data-text="Madhan">Madhan</span>
+            </h1>
+            <h1 className="text-6xl md:text-8xl font-bold tracking-tight">
+              <span className="mirror-text mirror-text-blue gradient-blue animate-glow-blue" data-text="Jothimani">Jothimani</span>
+            </h1>
+          </div>
           
-          <p className={`text-xl md:text-2xl text-gray-400 mb-6 font-light tracking-wide ${visibleSections.has('home') ? 'animate-slide-up delay-200' : 'opacity-0'}`}>
-            Data Scientist & Analytics Professional
+          <p className={`text-xl md:text-2xl text-gray-500 mb-6 font-light tracking-wide ${visibleSections.has('home') ? 'animate-slide-up delay-200' : 'opacity-0'}`}>
+            <span className="gradient-gold-blue font-medium">Data Scientist</span> & <span className="gradient-gold-blue font-medium">Analytics Professional</span>
           </p>
           
-          <p className={`text-base text-gray-500 mb-12 max-w-2xl mx-auto leading-relaxed ${visibleSections.has('home') ? 'animate-slide-up delay-300' : 'opacity-0'}`}>
+          <p className={`text-base text-gray-400 mb-12 max-w-2xl mx-auto leading-relaxed ${visibleSections.has('home') ? 'animate-slide-up delay-300' : 'opacity-0'}`}>
             Master's student at Northeastern University with 2+ years of experience in predictive modeling, 
             data engineering, and building scalable analytics solutions
           </p>
           
           <div className={`flex flex-col sm:flex-row gap-4 justify-center mb-16 ${visibleSections.has('home') ? 'animate-slide-up delay-400' : 'opacity-0'}`}>
             <a href="mailto:jothimani.m@northeastern.edu" 
-               className="btn-primary px-8 py-4 rounded-full font-medium tracking-wide text-sm uppercase">
+               className="btn-gold px-10 py-4 rounded-full text-sm uppercase tracking-wider">
               Get In Touch
             </a>
             <a href="#projects" 
-               className="btn-secondary px-8 py-4 rounded-full font-medium tracking-wide text-sm uppercase text-white">
+               className="btn-blue px-10 py-4 rounded-full text-sm uppercase tracking-wider">
               View Projects
             </a>
           </div>
           
-          <div className={`flex gap-4 justify-center ${visibleSections.has('home') ? 'animate-slide-up delay-500' : 'opacity-0'}`}>
+          <div className={`flex gap-5 justify-center ${visibleSections.has('home') ? 'animate-slide-up delay-500' : 'opacity-0'}`}>
             {[
               { icon: <Linkedin className="w-5 h-5" />, href: "http://www.linkedin.com/in/madhanjothimani" },
               { icon: <Github className="w-5 h-5" />, href: "https://github.com/MadhanJ05?tab=repositories" },
@@ -266,7 +266,7 @@ export default function Portfolio() {
                 href={social.href} 
                 target={social.href.startsWith('http') ? "_blank" : undefined}
                 rel={social.href.startsWith('http') ? "noopener noreferrer" : undefined}
-                className="social-icon w-12 h-12 flex items-center justify-center rounded-full bg-white/5 border border-white/10"
+                className="social-icon w-14 h-14 flex items-center justify-center rounded-full"
               >
                 {social.icon}
               </a>
@@ -274,52 +274,52 @@ export default function Portfolio() {
           </div>
           
           <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 hidden md:block">
-            <ChevronDown className="w-6 h-6 text-white/30 animate-bounce" />
+            <ChevronDown className="w-8 h-8 text-yellow-500/50 animate-bounce" />
           </div>
         </div>
       </section>
 
       {/* Projects Section */}
-      <section id="projects" className="py-32 px-6 relative">
+      <section id="projects" className="py-32 px-6 relative bg-gradient-to-b from-white via-gray-50/50 to-white">
         <div className="max-w-6xl mx-auto">
           <div className={`text-center mb-20 ${visibleSections.has('projects') ? 'animate-slide-up' : 'opacity-0'}`}>
-            <p className="text-white/40 text-sm tracking-widest uppercase mb-4">Portfolio</p>
-            <h2 className="text-4xl md:text-6xl font-bold gradient-text-static">
-              Featured Projects
+            <p className="text-yellow-600 text-sm tracking-widest uppercase mb-4 font-medium">Portfolio</p>
+            <h2 className="text-4xl md:text-6xl font-bold">
+              <span className="mirror-text gradient-gold" data-text="Featured Projects">Featured Projects</span>
             </h2>
           </div>
           
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {projects.map((project, idx) => (
               <div 
                 key={idx} 
-                className={`group card-hover glass rounded-2xl p-6 border border-white/10 ${visibleSections.has('projects') ? 'animate-slide-up' : 'opacity-0'}`}
+                className={`card-mirror rounded-2xl p-6 border border-gray-100 shadow-lg ${visibleSections.has('projects') ? 'animate-slide-up' : 'opacity-0'}`}
                 style={{ animationDelay: `${idx * 100}ms` }}
               >
                 <div className="flex items-center justify-between mb-4">
-                  <div className="icon-hover w-10 h-10 bg-white/10 rounded-xl flex items-center justify-center">
+                  <div className="icon-hover w-12 h-12 rounded-xl flex items-center justify-center text-yellow-600">
                     {project.icon}
                   </div>
-                  <span className="text-xs text-white/40 px-3 py-1 bg-white/5 rounded-full border border-white/10">
+                  <span className="text-xs text-blue-600 px-3 py-1 bg-blue-50 rounded-full border border-blue-100 font-medium">
                     {project.metrics}
                   </span>
                 </div>
                 
-                <h3 className="text-lg font-semibold mb-3 text-white group-hover:text-white/90 transition-colors">{project.title}</h3>
+                <h3 className="text-lg font-bold mb-3 text-gray-800">{project.title}</h3>
                 <p className="text-gray-500 mb-5 text-sm leading-relaxed">{project.desc}</p>
                 
                 <div className="flex flex-wrap gap-2 mb-5">
                   {project.tech.slice(0, 4).map((tech, i) => (
-                    <span key={i} className="tech-tag text-xs px-3 py-1 bg-white/5 rounded-full text-gray-400 border border-white/10">
+                    <span key={i} className="tech-tag text-xs px-3 py-1 rounded-full font-medium">
                       {tech}
                     </span>
                   ))}
                   {project.tech.length > 4 && (
-                    <span className="text-xs px-3 py-1 text-gray-500">+{project.tech.length - 4}</span>
+                    <span className="text-xs px-3 py-1 text-gray-400 font-medium">+{project.tech.length - 4}</span>
                   )}
                 </div>
                 
-                <a href={project.github} target="_blank" rel="noopener noreferrer" className="project-link text-white/60 text-sm">
+                <a href={project.github} target="_blank" rel="noopener noreferrer" className="project-link text-sm font-medium">
                   View Project <ArrowUpRight className="w-4 h-4" />
                 </a>
               </div>
@@ -330,12 +330,11 @@ export default function Portfolio() {
 
       {/* Experience Section */}
       <section id="experience" className="py-32 px-6 relative">
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-white/[0.02] to-transparent" />
         <div className="max-w-6xl mx-auto relative">
           <div className={`text-center mb-20 ${visibleSections.has('experience') ? 'animate-slide-up' : 'opacity-0'}`}>
-            <p className="text-white/40 text-sm tracking-widest uppercase mb-4">Career</p>
-            <h2 className="text-4xl md:text-6xl font-bold gradient-text-static">
-              Experience
+            <p className="text-blue-600 text-sm tracking-widest uppercase mb-4 font-medium">Career</p>
+            <h2 className="text-4xl md:text-6xl font-bold">
+              <span className="mirror-text mirror-text-blue gradient-blue" data-text="Experience">Experience</span>
             </h2>
           </div>
           
@@ -343,23 +342,23 @@ export default function Portfolio() {
             {experience.map((exp, idx) => (
               <div 
                 key={idx} 
-                className={`experience-card glass rounded-2xl p-8 border border-white/10 ${visibleSections.has('experience') ? 'animate-slide-up' : 'opacity-0'}`}
+                className={`experience-card rounded-2xl p-8 border border-gray-100 shadow-lg ${visibleSections.has('experience') ? 'animate-slide-up' : 'opacity-0'}`}
                 style={{ animationDelay: `${idx * 150}ms` }}
               >
                 <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-6">
                   <div>
-                    <h3 className="text-xl md:text-2xl font-semibold text-white">{exp.role}</h3>
-                    <p className="text-lg text-gray-400">{exp.company}</p>
-                    <p className="text-sm text-gray-500">{exp.location}</p>
+                    <h3 className="text-xl md:text-2xl font-bold gradient-gold">{exp.role}</h3>
+                    <p className="text-lg text-gray-600 font-medium">{exp.company}</p>
+                    <p className="text-sm text-gray-400">{exp.location}</p>
                   </div>
-                  <span className="text-gray-500 mt-2 md:mt-0 text-sm tracking-wider">{exp.period}</span>
+                  <span className="text-gray-500 mt-2 md:mt-0 text-sm tracking-wider bg-gray-50 px-4 py-2 rounded-full font-medium">{exp.period}</span>
                 </div>
                 
                 <ul className="space-y-3">
                   {exp.achievements.map((achievement, i) => (
-                    <li key={i} className="flex items-start gap-4 text-gray-400 group">
-                      <span className="text-white/30 mt-1.5 text-xs">●</span>
-                      <span className="text-sm leading-relaxed group-hover:text-gray-300 transition-colors">{achievement}</span>
+                    <li key={i} className="flex items-start gap-4 text-gray-600 group">
+                      <span className="text-yellow-500 mt-1.5 text-sm">●</span>
+                      <span className="text-sm leading-relaxed group-hover:text-gray-800 transition-colors">{achievement}</span>
                     </li>
                   ))}
                 </ul>
@@ -368,28 +367,28 @@ export default function Portfolio() {
           </div>
 
           {/* Education */}
-          <div className={`mt-12 glass rounded-2xl p-8 border border-white/10 experience-card ${visibleSections.has('experience') ? 'animate-slide-up delay-300' : 'opacity-0'}`}>
+          <div className={`mt-12 experience-card rounded-2xl p-8 border border-gray-100 shadow-lg ${visibleSections.has('experience') ? 'animate-slide-up delay-300' : 'opacity-0'}`}>
             <div className="flex items-center gap-4 mb-6">
-              <div className="icon-hover p-3 bg-white/5 rounded-xl border border-white/10">
-                <FileText className="w-5 h-5 text-white/70" />
+              <div className="icon-hover p-3 rounded-xl">
+                <FileText className="w-6 h-6 text-blue-600" />
               </div>
-              <h3 className="text-2xl font-semibold text-white">Education</h3>
+              <h3 className="text-2xl font-bold gradient-blue">Education</h3>
             </div>
             
             <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-6">
               <div>
-                <h4 className="text-xl font-medium text-white">{education.degree}</h4>
-                <p className="text-lg text-gray-400">{education.school}</p>
-                <p className="text-sm text-gray-500">{education.location}</p>
+                <h4 className="text-xl font-bold text-gray-800">{education.degree}</h4>
+                <p className="text-lg text-gray-600 font-medium">{education.school}</p>
+                <p className="text-sm text-gray-400">{education.location}</p>
               </div>
-              <span className="text-gray-500 mt-2 md:mt-0 text-sm tracking-wider">{education.period}</span>
+              <span className="text-gray-500 mt-2 md:mt-0 text-sm tracking-wider bg-gray-50 px-4 py-2 rounded-full font-medium">{education.period}</span>
             </div>
             
             <div className="mt-6">
-              <p className="text-gray-500 mb-3 text-sm tracking-wider uppercase">Key Courses</p>
+              <p className="text-gray-500 mb-3 text-sm tracking-wider uppercase font-medium">Key Courses</p>
               <div className="flex flex-wrap gap-2">
                 {education.courses.map((course, i) => (
-                  <span key={i} className="tech-tag text-xs px-4 py-2 bg-white/5 rounded-full text-gray-400 border border-white/10">
+                  <span key={i} className="tech-tag text-xs px-4 py-2 rounded-full font-medium">
                     {course}
                   </span>
                 ))}
@@ -400,12 +399,12 @@ export default function Portfolio() {
       </section>
 
       {/* Skills Section */}
-      <section id="skills" className="py-32 px-6">
+      <section id="skills" className="py-32 px-6 bg-gradient-to-b from-white via-gray-50/50 to-white">
         <div className="max-w-6xl mx-auto">
           <div className={`text-center mb-20 ${visibleSections.has('skills') ? 'animate-slide-up' : 'opacity-0'}`}>
-            <p className="text-white/40 text-sm tracking-widest uppercase mb-4">Expertise</p>
-            <h2 className="text-4xl md:text-6xl font-bold gradient-text-static">
-              Technical Skills
+            <p className="text-yellow-600 text-sm tracking-widest uppercase mb-4 font-medium">Expertise</p>
+            <h2 className="text-4xl md:text-6xl font-bold">
+              <span className="mirror-text gradient-gold-blue" data-text="Technical Skills">Technical Skills</span>
             </h2>
           </div>
           
@@ -413,18 +412,18 @@ export default function Portfolio() {
             {Object.entries(skills).map(([category, items], idx) => (
               <div 
                 key={category} 
-                className={`skill-card glass rounded-2xl p-6 border border-white/10 ${visibleSections.has('skills') ? 'animate-slide-up' : 'opacity-0'}`}
+                className={`skill-card rounded-2xl p-6 border border-gray-100 shadow-lg ${visibleSections.has('skills') ? 'animate-slide-up' : 'opacity-0'}`}
                 style={{ animationDelay: `${idx * 100}ms` }}
               >
-                <h3 className="text-lg font-medium mb-5 text-white flex items-center gap-3">
-                  <Code className="w-5 h-5 text-white/50" />
+                <h3 className="text-lg font-bold mb-5 gradient-blue flex items-center gap-3">
+                  <Code className="w-5 h-5 text-yellow-500" />
                   {category}
                 </h3>
                 <div className="flex flex-wrap gap-2">
                   {items.map((skill, i) => (
                     <span 
                       key={i} 
-                      className="tech-tag px-4 py-2 bg-white/5 rounded-lg text-sm text-gray-400 border border-white/10 cursor-default"
+                      className="tech-tag px-4 py-2 rounded-lg text-sm font-medium cursor-default"
                     >
                       {skill}
                     </span>
@@ -435,16 +434,16 @@ export default function Portfolio() {
           </div>
 
           {/* Certifications */}
-          <div className={`mt-12 glass rounded-2xl p-8 border border-white/10 skill-card ${visibleSections.has('skills') ? 'animate-slide-up delay-400' : 'opacity-0'}`}>
-            <h3 className="text-xl font-medium mb-8 text-white flex items-center gap-3">
-              <Award className="w-5 h-5 text-white/50" />
+          <div className={`mt-12 skill-card rounded-2xl p-8 border border-gray-100 shadow-lg ${visibleSections.has('skills') ? 'animate-slide-up delay-400' : 'opacity-0'}`}>
+            <h3 className="text-xl font-bold mb-8 gradient-gold flex items-center gap-3">
+              <Award className="w-6 h-6 text-blue-500" />
               Certifications
             </h3>
             <div className="grid md:grid-cols-2 gap-4">
               {certifications.map((cert, i) => (
-                <div key={i} className="cert-item flex items-center gap-4 text-gray-400 cursor-default">
-                  <span className="cert-check text-white/30">✓</span>
-                  <span className="text-sm">{cert}</span>
+                <div key={i} className="cert-item flex items-center gap-4 text-gray-600 cursor-default">
+                  <span className="cert-check font-bold">✓</span>
+                  <span className="text-sm font-medium">{cert}</span>
                 </div>
               ))}
             </div>
@@ -454,50 +453,49 @@ export default function Portfolio() {
 
       {/* Contact Section */}
       <section id="contact" className="py-32 px-6 relative">
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-white/[0.02] to-transparent" />
         <div className="max-w-4xl mx-auto text-center relative">
           <div className={`mb-16 ${visibleSections.has('contact') ? 'animate-slide-up' : 'opacity-0'}`}>
-            <p className="text-white/40 text-sm tracking-widest uppercase mb-4">Get In Touch</p>
-            <h2 className="text-4xl md:text-6xl font-bold gradient-text-static mb-6">
-              Let's Connect
+            <p className="text-blue-600 text-sm tracking-widest uppercase mb-4 font-medium">Get In Touch</p>
+            <h2 className="text-4xl md:text-6xl font-bold mb-6">
+              <span className="mirror-text gradient-gold-blue" data-text="Let's Connect">Let's Connect</span>
             </h2>
             <p className="text-gray-500 max-w-xl mx-auto">
               Currently seeking Data Science Intern opportunities. Let's discuss how I can contribute to your team.
             </p>
           </div>
           
-          <div className={`grid sm:grid-cols-3 gap-4 mb-12 ${visibleSections.has('contact') ? 'animate-slide-up delay-200' : 'opacity-0'}`}>
-            <a href="mailto:jothimani.m@northeastern.edu" className="contact-card flex flex-col items-center justify-center gap-3 glass p-8 rounded-2xl border border-white/10">
-              <Mail className="contact-icon w-6 h-6 text-white/50" />
-              <span className="text-sm text-gray-400">Email</span>
+          <div className={`grid sm:grid-cols-3 gap-6 mb-12 ${visibleSections.has('contact') ? 'animate-slide-up delay-200' : 'opacity-0'}`}>
+            <a href="mailto:jothimani.m@northeastern.edu" className="contact-card flex flex-col items-center justify-center gap-4 p-8 rounded-2xl border border-gray-100 shadow-lg">
+              <Mail className="contact-icon w-8 h-8" />
+              <span className="text-sm text-gray-600 font-medium">Email</span>
             </a>
-            <a href="tel:617-331-8900" className="contact-card flex flex-col items-center justify-center gap-3 glass p-8 rounded-2xl border border-white/10">
-              <Phone className="contact-icon w-6 h-6 text-white/50" />
-              <span className="text-sm text-gray-400">Phone</span>
+            <a href="tel:617-331-8900" className="contact-card flex flex-col items-center justify-center gap-4 p-8 rounded-2xl border border-gray-100 shadow-lg">
+              <Phone className="contact-icon w-8 h-8" />
+              <span className="text-sm text-gray-600 font-medium">Phone</span>
             </a>
-            <div className="contact-card flex flex-col items-center justify-center gap-3 glass p-8 rounded-2xl border border-white/10">
-              <MapPin className="contact-icon w-6 h-6 text-white/50" />
-              <span className="text-sm text-gray-400">Boston, MA</span>
+            <div className="contact-card flex flex-col items-center justify-center gap-4 p-8 rounded-2xl border border-gray-100 shadow-lg">
+              <MapPin className="contact-icon w-8 h-8" />
+              <span className="text-sm text-gray-600 font-medium">Boston, MA</span>
             </div>
           </div>
           
-          <div className={`flex gap-4 justify-center ${visibleSections.has('contact') ? 'animate-slide-up delay-300' : 'opacity-0'}`}>
+          <div className={`flex gap-5 justify-center ${visibleSections.has('contact') ? 'animate-slide-up delay-300' : 'opacity-0'}`}>
             <a href="http://www.linkedin.com/in/madhanjothimani" target="_blank" rel="noopener noreferrer"
-               className="social-icon w-12 h-12 flex items-center justify-center glass rounded-full border border-white/10">
-              <Linkedin className="w-5 h-5" />
+               className="social-icon w-14 h-14 flex items-center justify-center rounded-full">
+              <Linkedin className="w-6 h-6" />
             </a>
             <a href="https://github.com/MadhanJ05?tab=repositories" target="_blank" rel="noopener noreferrer"
-               className="social-icon w-12 h-12 flex items-center justify-center glass rounded-full border border-white/10">
-              <Github className="w-5 h-5" />
+               className="social-icon w-14 h-14 flex items-center justify-center rounded-full">
+              <Github className="w-6 h-6" />
             </a>
           </div>
         </div>
       </section>
 
       {/* Footer */}
-      <footer className="py-8 text-center border-t border-white/5">
-        <p className="text-sm text-gray-600 hover:text-gray-500 transition-colors">
-          © 2024 Madhan Jothimani
+      <footer className="py-8 text-center border-t border-gray-100 bg-white">
+        <p className="text-sm text-gray-400 hover:text-gray-600 transition-colors">
+          © 2024 <span className="gradient-gold-blue font-medium">Madhan Jothimani</span>
         </p>
       </footer>
     </div>
