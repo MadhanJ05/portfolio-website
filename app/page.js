@@ -64,8 +64,6 @@ export default function Portfolio() {
     "Tools & Platforms": ["Git", "Docker", "Jenkins", "MySQL", "PostgreSQL"]
   };
 
-  const marqueeSkills = ["Python", "SQL", "Machine Learning", "Data Engineering", "Tableau", "Power BI", "Apache Spark", "Docker", "PostgreSQL", "Random Forest", "K-Means", "Time Series", "ETL Pipelines", "Data Visualization"];
-
   const projects = [
     {
       title: "H&M Fashion Data Warehouse",
@@ -159,7 +157,7 @@ export default function Portfolio() {
       <div 
         className="fixed inset-0 pointer-events-none z-0 transition-opacity duration-500"
         style={{
-          background: `radial-gradient(800px circle at ${mousePosition.x}px ${mousePosition.y}px, rgba(212, 175, 55, 0.06), transparent 40%)`
+          background: `radial-gradient(800px circle at ${mousePosition.x}px ${mousePosition.y}px, rgba(239, 68, 68, 0.06), transparent 40%)`
         }}
       />
 
@@ -177,7 +175,7 @@ export default function Portfolio() {
                   key={item}
                   href={`#${item.toLowerCase()}`}
                   className={`nav-link text-sm tracking-wider uppercase py-1 ${
-                    activeSection === item.toLowerCase() ? 'active text-yellow-600' : ''
+                    activeSection === item.toLowerCase() ? 'active text-red-500' : ''
                   }`}
                 >
                   {item}
@@ -186,20 +184,20 @@ export default function Portfolio() {
             </div>
 
             <button 
-              className="md:hidden p-2 hover:bg-yellow-500/10 rounded-lg transition-colors"
+              className="md:hidden p-2 hover:bg-red-500/10 rounded-lg transition-colors"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             >
-              {mobileMenuOpen ? <X className="w-6 h-6 text-yellow-600" /> : <Menu className="w-6 h-6 text-yellow-600" />}
+              {mobileMenuOpen ? <X className="w-6 h-6 text-red-500" /> : <Menu className="w-6 h-6 text-red-500" />}
             </button>
           </div>
 
           {mobileMenuOpen && (
             <div className="md:hidden mt-4 pb-4 flex flex-col gap-4 animate-slide-up">
-              {['Home', 'Projects', 'Experience', 'Skills', 'Contact'].map((item, idx) => (
+              {['Home', 'Projects', 'Experience', 'Skills', 'Contact'].map((item) => (
                 <a
                   key={item}
                   href={`#${item.toLowerCase()}`}
-                  className="text-gray-600 hover:text-yellow-600 transition-colors duration-300 pl-4 border-l-2 border-transparent hover:border-yellow-500 text-sm tracking-wider uppercase font-medium"
+                  className="text-gray-600 hover:text-red-500 transition-colors duration-300 pl-4 border-l-2 border-transparent hover:border-red-500 text-sm tracking-wider uppercase font-medium"
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   {item}
@@ -215,17 +213,14 @@ export default function Portfolio() {
         <div className="max-w-5xl mx-auto px-6 text-center relative z-10">
           <div className={`mb-8 ${visibleSections.has('home') ? 'animate-slide-up' : 'opacity-0'}`}>
             <div className="inline-flex items-center gap-3 px-6 py-3 glass-card rounded-full hover:shadow-xl transition-all duration-500 cursor-default">
-              <Sparkles className="w-5 h-5 text-yellow-500 animate-pulse" />
+              <Sparkles className="w-5 h-5 text-red-500 animate-pulse" />
               <span className="text-gray-600 text-sm tracking-widest uppercase font-medium">Data Science & Analytics</span>
               <Sparkles className="w-5 h-5 text-blue-500 animate-pulse" />
             </div>
           </div>
           
-          <h1 className={`text-6xl md:text-8xl font-bold tracking-tight mb-4 ${visibleSections.has('home') ? 'animate-slide-up delay-100' : 'opacity-0'}`}>
-            <span className="gradient-gold animate-text-glow">Madhan</span>
-          </h1>
-          <h1 className={`text-6xl md:text-8xl font-bold tracking-tight mb-8 ${visibleSections.has('home') ? 'animate-slide-up delay-200' : 'opacity-0'}`}>
-            <span className="gradient-blue">Jothimani</span>
+          <h1 className={`text-6xl md:text-8xl font-bold tracking-tight mb-8 ${visibleSections.has('home') ? 'animate-slide-up delay-100' : 'opacity-0'}`}>
+            <span className="name-hover">Madhan Jothimani</span>
           </h1>
           
           <p className={`text-xl md:text-2xl text-gray-500 mb-6 font-light tracking-wide ${visibleSections.has('home') ? 'animate-slide-up delay-300' : 'opacity-0'}`}>
@@ -267,7 +262,7 @@ export default function Portfolio() {
           </div>
           
           <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 hidden md:block">
-            <ChevronDown className="w-8 h-8 text-yellow-500/50 animate-bounce" />
+            <ChevronDown className="w-8 h-8 text-red-500/50 animate-bounce" />
           </div>
         </div>
       </section>
@@ -279,7 +274,7 @@ export default function Portfolio() {
       <section id="projects" className="py-32 px-6 relative glow-section">
         <div className="max-w-6xl mx-auto">
           <div className={`text-center mb-20 ${visibleSections.has('projects') ? 'animate-slide-up' : 'opacity-0'}`}>
-            <p className="text-yellow-600 text-sm tracking-widest uppercase mb-4 font-semibold">Portfolio</p>
+            <p className="text-red-500 text-sm tracking-widest uppercase mb-4 font-semibold">Portfolio</p>
             <h2 className="text-4xl md:text-6xl font-bold gradient-gold">
               Featured Projects
             </h2>
@@ -293,7 +288,7 @@ export default function Portfolio() {
                 style={{ animationDelay: `${idx * 100}ms` }}
               >
                 <div className="flex items-center justify-between mb-4">
-                  <div className="icon-box w-12 h-12 rounded-xl flex items-center justify-center text-yellow-600">
+                  <div className="icon-box w-12 h-12 rounded-xl flex items-center justify-center text-red-500">
                     {project.icon}
                   </div>
                   <span className="text-xs text-blue-600 px-3 py-1.5 bg-blue-50 rounded-full border border-blue-100 font-semibold">
@@ -356,7 +351,7 @@ export default function Portfolio() {
                 <ul className="space-y-3">
                   {exp.achievements.map((achievement, i) => (
                     <li key={i} className="flex items-start gap-4 text-gray-600 group">
-                      <span className="text-yellow-500 mt-1.5 text-sm font-bold">●</span>
+                      <span className="text-red-500 mt-1.5 text-sm font-bold">●</span>
                       <span className="text-sm leading-relaxed group-hover:text-gray-800 transition-colors">{achievement}</span>
                     </li>
                   ))}
@@ -404,7 +399,7 @@ export default function Portfolio() {
       <section id="skills" className="py-32 px-6 glow-section-mixed">
         <div className="max-w-6xl mx-auto">
           <div className={`text-center mb-20 ${visibleSections.has('skills') ? 'animate-slide-up' : 'opacity-0'}`}>
-            <p className="text-yellow-600 text-sm tracking-widest uppercase mb-4 font-semibold">Expertise</p>
+            <p className="text-red-500 text-sm tracking-widest uppercase mb-4 font-semibold">Expertise</p>
             <h2 className="text-4xl md:text-6xl font-bold gradient-gold-blue">
               Technical Skills
             </h2>
@@ -418,7 +413,7 @@ export default function Portfolio() {
                 style={{ animationDelay: `${idx * 100}ms` }}
               >
                 <h3 className="text-lg font-bold mb-5 gradient-blue flex items-center gap-3">
-                  <Code className="w-5 h-5 text-yellow-500" />
+                  <Code className="w-5 h-5 text-red-500" />
                   {category}
                 </h3>
                 <div className="flex flex-wrap gap-2">
@@ -495,7 +490,7 @@ export default function Portfolio() {
       </section>
 
       {/* Footer */}
-      <footer className="py-8 text-center border-t border-yellow-500/10 bg-white">
+      <footer className="py-8 text-center border-t border-red-500/10 bg-white">
         <p className="text-sm text-gray-400 hover:text-gray-600 transition-colors">
           © 2024 <span className="gradient-gold-blue font-semibold">Madhan Jothimani</span> • Built with Next.js & Tailwind CSS
         </p>

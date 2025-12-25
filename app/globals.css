@@ -1,4 +1,4 @@
-/* app/globals.css - White + Gold/Blue Fibonacci Style */
+/* app/globals.css - White + Red/Blue Style */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -22,25 +22,21 @@ body {
    COLOR VARIABLES
    ======================================== */
 :root {
-  --gold-light: #ffd700;
-  --gold: #d4af37;
-  --gold-dark: #b8860b;
+  --red-light: #f87171;
+  --red: #ef4444;
+  --red-dark: #dc2626;
+  --red-darker: #b91c1c;
   --blue-light: #60a5fa;
   --blue: #3b82f6;
   --blue-dark: #1d4ed8;
   --purple: #8b5cf6;
-  --white: #ffffff;
-  --off-white: #fafafa;
-  --gray-50: #f9fafb;
-  --gray-100: #f3f4f6;
-  --gray-200: #e5e7eb;
-  --gray-300: #d1d5db;
-  --gray-400: #9ca3af;
-  --gray-500: #6b7280;
-  --gray-600: #4b5563;
-  --gray-700: #374151;
-  --gray-800: #1f2937;
-  --gray-900: #111827;
+  --bg-light: #fafafa;
+  --bg-card: #ffffff;
+  --border-light: rgba(0, 0, 0, 0.06);
+  --border-glow: rgba(239, 68, 68, 0.3);
+  --text-primary: #1f2937;
+  --text-secondary: #6b7280;
+  --text-muted: #9ca3af;
 }
 
 /* ========================================
@@ -51,7 +47,7 @@ body {
   100% { background-position: 200% center; }
 }
 
-@keyframes goldShimmer {
+@keyframes redShimmer {
   0% { background-position: 0% 50%; }
   50% { background-position: 100% 50%; }
   100% { background-position: 0% 50%; }
@@ -64,11 +60,11 @@ body {
 
 @keyframes pulse-glow {
   0%, 100% { 
-    opacity: 0.5;
+    opacity: 0.3;
     transform: scale(1);
   }
   50% { 
-    opacity: 0.8;
+    opacity: 0.6;
     transform: scale(1.05);
   }
 }
@@ -88,57 +84,33 @@ body {
   to { opacity: 1; transform: scale(1); }
 }
 
-@keyframes marquee {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
-}
-
-@keyframes marquee-reverse {
-  0% { transform: translateX(-50%); }
-  100% { transform: translateX(0); }
-}
-
 @keyframes glow-pulse {
   0%, 100% { 
     box-shadow: 
-      0 0 20px rgba(212, 175, 55, 0.3),
-      0 0 40px rgba(212, 175, 55, 0.1);
+      0 0 20px rgba(239, 68, 68, 0.15),
+      0 0 40px rgba(239, 68, 68, 0.08);
   }
   50% { 
     box-shadow: 
-      0 0 40px rgba(212, 175, 55, 0.5),
-      0 0 80px rgba(212, 175, 55, 0.2),
-      0 0 120px rgba(59, 130, 246, 0.1);
+      0 0 40px rgba(239, 68, 68, 0.25),
+      0 0 80px rgba(239, 68, 68, 0.12),
+      0 0 120px rgba(59, 130, 246, 0.08);
   }
 }
 
 @keyframes text-glow {
   0%, 100% { 
     text-shadow: 
-      0 0 10px rgba(212, 175, 55, 0.5),
-      0 0 20px rgba(212, 175, 55, 0.3);
+      0 0 10px rgba(239, 68, 68, 0.4),
+      0 0 20px rgba(239, 68, 68, 0.2),
+      0 0 30px rgba(239, 68, 68, 0.1);
   }
   50% { 
     text-shadow: 
-      0 0 20px rgba(212, 175, 55, 0.8),
-      0 0 40px rgba(212, 175, 55, 0.5),
-      0 0 60px rgba(212, 175, 55, 0.3);
-  }
-}
-
-@keyframes number-glow {
-  0%, 100% { 
-    text-shadow: 
-      0 0 20px rgba(59, 130, 246, 0.6),
-      0 0 40px rgba(59, 130, 246, 0.3);
-    filter: brightness(1);
-  }
-  50% { 
-    text-shadow: 
-      0 0 30px rgba(59, 130, 246, 0.9),
-      0 0 60px rgba(59, 130, 246, 0.5),
-      0 0 90px rgba(212, 175, 55, 0.3);
-    filter: brightness(1.1);
+      0 0 20px rgba(239, 68, 68, 0.6),
+      0 0 40px rgba(239, 68, 68, 0.3),
+      0 0 60px rgba(239, 68, 68, 0.2),
+      0 0 80px rgba(239, 68, 68, 0.1);
   }
 }
 
@@ -168,7 +140,6 @@ body {
 .animate-float { animation: float 6s ease-in-out infinite; }
 .animate-glow-pulse { animation: glow-pulse 3s ease-in-out infinite; }
 .animate-text-glow { animation: text-glow 3s ease-in-out infinite; }
-.animate-number-glow { animation: number-glow 2s ease-in-out infinite; }
 
 .delay-100 { animation-delay: 100ms; }
 .delay-200 { animation-delay: 200ms; }
@@ -181,61 +152,73 @@ body {
    GRADIENT TEXT STYLES
    ======================================== */
 .gradient-gold {
-  background: linear-gradient(135deg, #ffd700 0%, #d4af37 25%, #b8860b 50%, #d4af37 75%, #ffd700 100%);
+  background: linear-gradient(135deg, #f87171 0%, #ef4444 25%, #fb7185 50%, #ef4444 75%, #f87171 100%);
   background-size: 200% auto;
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
-  animation: goldShimmer 4s ease infinite;
+  animation: redShimmer 4s ease infinite;
 }
 
 .gradient-blue {
-  background: linear-gradient(135deg, #60a5fa 0%, #3b82f6 25%, #1d4ed8 50%, #3b82f6 75%, #60a5fa 100%);
+  background: linear-gradient(135deg, #60a5fa 0%, #3b82f6 25%, #93c5fd 50%, #3b82f6 75%, #60a5fa 100%);
   background-size: 200% auto;
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
-  animation: goldShimmer 4s ease infinite;
+  animation: redShimmer 4s ease infinite;
 }
 
 .gradient-gold-blue {
-  background: linear-gradient(135deg, #ffd700 0%, #d4af37 30%, #3b82f6 70%, #60a5fa 100%);
+  background: linear-gradient(135deg, #f87171 0%, #ef4444 30%, #3b82f6 70%, #60a5fa 100%);
   background-size: 200% auto;
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
-  animation: goldShimmer 5s ease infinite;
+  animation: redShimmer 5s ease infinite;
 }
 
 /* ========================================
-   GLASSMORPHISM CARDS
+   NAME ANIMATED GRADIENT (Red <-> Blue)
+   ======================================== */
+.name-hover {
+  background: linear-gradient(135deg, #f87171 0%, #ef4444 25%, #3b82f6 50%, #60a5fa 75%, #f87171 100%);
+  background-size: 300% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: nameShimmer 10s ease infinite;
+  cursor: default;
+}
+
+@keyframes nameShimmer {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* ========================================
+   GLASSMORPHISM CARDS (LIGHT)
    ======================================== */
 .glass-card {
-  background: rgba(255, 255, 255, 0.8);
+  background: rgba(255, 255, 255, 0.9);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(239, 68, 68, 0.1);
   box-shadow: 
     0 8px 32px rgba(0, 0, 0, 0.08),
-    inset 0 1px 0 rgba(255, 255, 255, 1);
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
   transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
 }
 
 .glass-card:hover {
   background: rgba(255, 255, 255, 0.95);
   box-shadow: 
-    0 20px 60px rgba(212, 175, 55, 0.15),
-    0 10px 30px rgba(59, 130, 246, 0.1),
+    0 20px 60px rgba(239, 68, 68, 0.12),
+    0 10px 30px rgba(0, 0, 0, 0.1),
     inset 0 1px 0 rgba(255, 255, 255, 1);
   transform: translateY(-10px);
-  border-color: rgba(212, 175, 55, 0.3);
-}
-
-.glass-card-strong {
-  background: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(30px);
-  -webkit-backdrop-filter: blur(30px);
-  border: 1px solid rgba(212, 175, 55, 0.2);
+  border-color: rgba(239, 68, 68, 0.3);
 }
 
 /* ========================================
@@ -254,18 +237,18 @@ body {
   transform: translateX(-50%);
   width: 80%;
   height: 60%;
-  background: radial-gradient(ellipse at center, rgba(212, 175, 55, 0.1) 0%, transparent 70%);
+  background: radial-gradient(ellipse at center, rgba(239, 68, 68, 0.05) 0%, transparent 70%);
   pointer-events: none;
   animation: pulse-glow 6s ease-in-out infinite;
 }
 
 .glow-section-blue::before {
-  background: radial-gradient(ellipse at center, rgba(59, 130, 246, 0.1) 0%, transparent 70%);
+  background: radial-gradient(ellipse at center, rgba(59, 130, 246, 0.05) 0%, transparent 70%);
 }
 
 .glow-section-mixed::before {
-  background: radial-gradient(ellipse at 30% 50%, rgba(212, 175, 55, 0.1) 0%, transparent 50%),
-              radial-gradient(ellipse at 70% 50%, rgba(59, 130, 246, 0.1) 0%, transparent 50%);
+  background: radial-gradient(ellipse at 30% 50%, rgba(239, 68, 68, 0.05) 0%, transparent 50%),
+              radial-gradient(ellipse at 70% 50%, rgba(59, 130, 246, 0.05) 0%, transparent 50%);
 }
 
 /* ========================================
@@ -275,9 +258,9 @@ body {
   height: 1px;
   background: linear-gradient(90deg, 
     transparent 0%, 
-    rgba(212, 175, 55, 0.3) 20%, 
-    rgba(212, 175, 55, 0.6) 50%, 
-    rgba(59, 130, 246, 0.3) 80%, 
+    rgba(239, 68, 68, 0.2) 20%, 
+    rgba(239, 68, 68, 0.4) 50%, 
+    rgba(59, 130, 246, 0.2) 80%, 
     transparent 100%
   );
   border: none;
@@ -288,10 +271,10 @@ body {
   height: 2px;
   background: linear-gradient(90deg, 
     transparent 0%, 
-    rgba(212, 175, 55, 0.5) 20%, 
-    rgba(212, 175, 55, 0.8) 35%,
-    rgba(59, 130, 246, 0.8) 65%,
-    rgba(59, 130, 246, 0.5) 80%, 
+    rgba(239, 68, 68, 0.4) 20%, 
+    rgba(239, 68, 68, 0.6) 35%,
+    rgba(59, 130, 246, 0.6) 65%,
+    rgba(59, 130, 246, 0.4) 80%, 
     transparent 100%
   );
   background-size: 200% 100%;
@@ -302,152 +285,30 @@ body {
   height: 2px;
   background: linear-gradient(90deg, 
     transparent 0%, 
-    #d4af37 30%, 
+    #ef4444 30%, 
     #3b82f6 70%, 
     transparent 100%
   );
   box-shadow: 
-    0 0 10px rgba(212, 175, 55, 0.5),
-    0 0 20px rgba(59, 130, 246, 0.3);
+    0 0 15px rgba(239, 68, 68, 0.4),
+    0 0 30px rgba(59, 130, 246, 0.3);
 }
 
 /* ========================================
-   MARQUEE ANIMATION
-   ======================================== */
-.marquee-container {
-  overflow: hidden;
-  white-space: nowrap;
-  position: relative;
-}
-
-.marquee-container::before,
-.marquee-container::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  width: 100px;
-  z-index: 2;
-  pointer-events: none;
-}
-
-.marquee-container::before {
-  left: 0;
-  background: linear-gradient(90deg, var(--off-white) 0%, transparent 100%);
-}
-
-.marquee-container::after {
-  right: 0;
-  background: linear-gradient(90deg, transparent 0%, var(--off-white) 100%);
-}
-
-.marquee-content {
-  display: inline-flex;
-  animation: marquee 30s linear infinite;
-}
-
-.marquee-content:hover {
-  animation-play-state: paused;
-}
-
-.marquee-reverse .marquee-content {
-  animation: marquee-reverse 30s linear infinite;
-}
-
-.marquee-item {
-  display: inline-flex;
-  align-items: center;
-  padding: 0 2rem;
-  font-size: 1.25rem;
-  font-weight: 600;
-  color: var(--gray-400);
-  transition: all 0.3s ease;
-}
-
-.marquee-item:hover {
-  color: var(--gold);
-}
-
-.marquee-item .separator {
-  margin: 0 1.5rem;
-  color: var(--gold);
-  font-size: 0.75rem;
-}
-
-/* ========================================
-   STATS SECTION WITH GLOWING NUMBERS
-   ======================================== */
-.stats-card {
-  position: relative;
-  text-align: center;
-  padding: 2rem;
-  background: rgba(255, 255, 255, 0.9);
-  border-radius: 1.5rem;
-  border: 1px solid rgba(212, 175, 55, 0.2);
-  overflow: hidden;
-  transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
-}
-
-.stats-card::before {
-  content: '';
-  position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-  background: radial-gradient(circle at center, rgba(212, 175, 55, 0.1) 0%, transparent 50%);
-  opacity: 0;
-  transition: opacity 0.5s ease;
-}
-
-.stats-card:hover::before {
-  opacity: 1;
-}
-
-.stats-card:hover {
-  transform: translateY(-8px) scale(1.02);
-  border-color: rgba(212, 175, 55, 0.4);
-  box-shadow: 
-    0 20px 40px rgba(212, 175, 55, 0.15),
-    0 0 60px rgba(59, 130, 246, 0.1);
-}
-
-.stats-number {
-  font-size: 3.5rem;
-  font-weight: 800;
-  background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 50%, #d4af37 100%);
-  background-size: 200% auto;
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  animation: goldShimmer 3s ease infinite, number-glow 2s ease-in-out infinite;
-  line-height: 1;
-  margin-bottom: 0.5rem;
-}
-
-.stats-label {
-  font-size: 0.875rem;
-  color: var(--gray-500);
-  font-weight: 500;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-}
-
-/* ========================================
-   NAVIGATION
+   NAVIGATION (LIGHT)
    ======================================== */
 .nav-glass {
   background: rgba(255, 255, 255, 0.9);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  border-bottom: 1px solid rgba(212, 175, 55, 0.1);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  border-bottom: 1px solid rgba(239, 68, 68, 0.08);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
 }
 
 .nav-link {
   position: relative;
   transition: all 0.3s ease;
-  color: var(--gray-600);
+  color: var(--text-secondary);
   font-weight: 500;
 }
 
@@ -458,10 +319,11 @@ body {
   left: 50%;
   width: 0;
   height: 2px;
-  background: linear-gradient(90deg, var(--gold), var(--blue));
+  background: linear-gradient(90deg, var(--red), var(--blue));
   transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
   transform: translateX(-50%);
   border-radius: 1px;
+  box-shadow: 0 0 10px rgba(239, 68, 68, 0.4);
 }
 
 .nav-link:hover::after,
@@ -471,22 +333,23 @@ body {
 
 .nav-link:hover,
 .nav-link.active {
-  color: var(--gold-dark);
+  color: var(--red);
 }
 
 /* ========================================
-   BUTTONS
+   BUTTONS (LIGHT)
    ======================================== */
 .btn-gold {
   position: relative;
   overflow: hidden;
-  background: linear-gradient(135deg, #ffd700 0%, #d4af37 50%, #b8860b 100%);
-  color: #1a1a1a;
+  background: linear-gradient(135deg, #f87171 0%, #ef4444 50%, #dc2626 100%);
+  color: white;
   font-weight: 600;
   transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
   box-shadow: 
-    0 4px 20px rgba(212, 175, 55, 0.4),
-    inset 0 1px 0 rgba(255, 255, 255, 0.4);
+    0 4px 20px rgba(239, 68, 68, 0.35),
+    0 0 40px rgba(239, 68, 68, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
 }
 
 .btn-gold::before {
@@ -496,16 +359,16 @@ body {
   left: -100%;
   width: 100%;
   height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.5), transparent);
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
   animation: shine 3s ease-in-out infinite;
 }
 
 .btn-gold:hover {
   transform: translateY(-4px) scale(1.02);
   box-shadow: 
-    0 15px 40px rgba(212, 175, 55, 0.5),
-    0 0 60px rgba(212, 175, 55, 0.3),
-    inset 0 1px 0 rgba(255, 255, 255, 0.5);
+    0 15px 40px rgba(239, 68, 68, 0.4),
+    0 0 80px rgba(239, 68, 68, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.4);
 }
 
 .btn-blue {
@@ -536,29 +399,29 @@ body {
 
 .btn-blue:hover {
   color: white;
-  border-color: var(--blue);
+  border-color: var(--blue-light);
   box-shadow: 
-    0 15px 40px rgba(59, 130, 246, 0.3),
-    0 0 40px rgba(59, 130, 246, 0.2);
+    0 15px 40px rgba(59, 130, 246, 0.25),
+    0 0 60px rgba(59, 130, 246, 0.15);
 }
 
 /* ========================================
-   SOCIAL ICONS
+   SOCIAL ICONS (LIGHT)
    ======================================== */
 .social-icon {
   position: relative;
   transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
   overflow: hidden;
   background: white;
-  border: 1px solid rgba(212, 175, 55, 0.2);
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  border: 1px solid rgba(239, 68, 68, 0.15);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
 }
 
 .social-icon::before {
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(135deg, #ffd700, #d4af37);
+  background: linear-gradient(135deg, #f87171, #ef4444);
   transform: translateY(100%);
   transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1);
   z-index: 0;
@@ -570,26 +433,26 @@ body {
 
 .social-icon:hover {
   transform: translateY(-8px) scale(1.1);
-  border-color: var(--gold);
+  border-color: var(--red);
   box-shadow: 
-    0 20px 40px rgba(212, 175, 55, 0.3),
-    0 0 40px rgba(212, 175, 55, 0.2);
+    0 20px 40px rgba(239, 68, 68, 0.25),
+    0 0 60px rgba(239, 68, 68, 0.15);
 }
 
 .social-icon svg {
   position: relative;
   z-index: 1;
   transition: all 0.4s ease;
-  color: var(--gold-dark);
+  color: var(--red);
 }
 
 .social-icon:hover svg {
-  color: #1a1a1a;
+  color: white;
   transform: scale(1.1);
 }
 
 /* ========================================
-   TECH TAGS
+   TECH TAGS (LIGHT)
    ======================================== */
 .tech-tag {
   position: relative;
@@ -605,7 +468,7 @@ body {
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(135deg, rgba(59, 130, 246, 0.2), rgba(212, 175, 55, 0.1));
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.2), rgba(239, 68, 68, 0.15));
   transform: scaleX(0);
   transform-origin: left;
   transition: transform 0.3s ease;
@@ -617,20 +480,21 @@ body {
 
 .tech-tag:hover {
   border-color: var(--blue);
-  box-shadow: 0 4px 15px rgba(59, 130, 246, 0.2);
+  box-shadow: 0 4px 20px rgba(59, 130, 246, 0.2);
   color: var(--blue-dark);
 }
 
 /* ========================================
-   PROJECT CARDS
+   PROJECT CARDS (LIGHT)
    ======================================== */
 .project-card {
   position: relative;
-  background: rgba(255, 255, 255, 0.9);
+  background: white;
   backdrop-filter: blur(10px);
-  border: 1px solid rgba(212, 175, 55, 0.1);
+  border: 1px solid rgba(239, 68, 68, 0.08);
   transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
   overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
 }
 
 .project-card::before {
@@ -640,9 +504,10 @@ body {
   left: 0;
   right: 0;
   height: 3px;
-  background: linear-gradient(90deg, var(--gold), var(--blue));
+  background: linear-gradient(90deg, var(--red), var(--blue));
   transform: scaleX(0);
   transition: transform 0.4s ease;
+  box-shadow: 0 0 20px rgba(239, 68, 68, 0.4);
 }
 
 .project-card:hover::before {
@@ -652,9 +517,9 @@ body {
 .project-card:hover {
   transform: translateY(-12px);
   box-shadow: 
-    0 30px 60px rgba(212, 175, 55, 0.12),
-    0 15px 30px rgba(59, 130, 246, 0.08);
-  border-color: rgba(212, 175, 55, 0.3);
+    0 30px 60px rgba(0, 0, 0, 0.1),
+    0 0 40px rgba(239, 68, 68, 0.08);
+  border-color: rgba(239, 68, 68, 0.2);
 }
 
 .project-link {
@@ -674,8 +539,9 @@ body {
   left: 0;
   width: 0;
   height: 2px;
-  background: linear-gradient(90deg, var(--gold), var(--blue));
+  background: linear-gradient(90deg, var(--red), var(--blue));
   transition: width 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+  box-shadow: 0 0 10px rgba(239, 68, 68, 0.4);
 }
 
 .project-link:hover::after {
@@ -683,12 +549,12 @@ body {
 }
 
 .project-link:hover {
-  color: var(--gold-dark);
+  color: var(--red);
 }
 
 .project-link:hover svg {
   transform: translate(3px, -3px);
-  color: var(--gold);
+  color: var(--red);
 }
 
 .project-link svg {
@@ -696,12 +562,12 @@ body {
 }
 
 /* ========================================
-   EXPERIENCE CARDS
+   EXPERIENCE CARDS (LIGHT)
    ======================================== */
 .experience-card {
   position: relative;
   background: white;
-  border: 1px solid rgba(212, 175, 55, 0.1);
+  border: 1px solid rgba(239, 68, 68, 0.08);
   transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
   overflow: hidden;
 }
@@ -713,9 +579,10 @@ body {
   top: 0;
   bottom: 0;
   width: 4px;
-  background: linear-gradient(180deg, var(--gold), var(--blue));
+  background: linear-gradient(180deg, var(--red), var(--blue));
   opacity: 0;
   transition: opacity 0.4s ease;
+  box-shadow: 0 0 20px rgba(239, 68, 68, 0.4);
 }
 
 .experience-card:hover::before {
@@ -725,17 +592,17 @@ body {
 .experience-card:hover {
   transform: translateX(10px);
   box-shadow: 
-    0 20px 50px rgba(212, 175, 55, 0.1),
-    0 10px 25px rgba(59, 130, 246, 0.05);
-  border-color: rgba(212, 175, 55, 0.3);
+    0 20px 50px rgba(0, 0, 0, 0.1),
+    0 0 30px rgba(239, 68, 68, 0.08);
+  border-color: rgba(239, 68, 68, 0.2);
 }
 
 /* ========================================
-   SKILL CARDS
+   SKILL CARDS (LIGHT)
    ======================================== */
 .skill-card {
   background: white;
-  border: 1px solid rgba(59, 130, 246, 0.1);
+  border: 1px solid rgba(59, 130, 246, 0.08);
   transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
   position: relative;
   overflow: hidden;
@@ -748,9 +615,10 @@ body {
   left: 0;
   right: 0;
   height: 3px;
-  background: linear-gradient(90deg, var(--blue), var(--gold));
+  background: linear-gradient(90deg, var(--blue), var(--red));
   transform: scaleX(0);
   transition: transform 0.4s ease;
+  box-shadow: 0 0 20px rgba(59, 130, 246, 0.4);
 }
 
 .skill-card:hover::after {
@@ -759,18 +627,18 @@ body {
 
 .skill-card:hover {
   box-shadow: 
-    0 20px 50px rgba(59, 130, 246, 0.1),
-    0 10px 25px rgba(212, 175, 55, 0.05);
-  border-color: rgba(59, 130, 246, 0.3);
+    0 20px 50px rgba(0, 0, 0, 0.1),
+    0 0 30px rgba(59, 130, 246, 0.08);
+  border-color: rgba(59, 130, 246, 0.2);
 }
 
 /* ========================================
-   CONTACT CARDS
+   CONTACT CARDS (LIGHT)
    ======================================== */
 .contact-card {
   transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
   background: white;
-  border: 1px solid rgba(212, 175, 55, 0.1);
+  border: 1px solid rgba(239, 68, 68, 0.08);
   position: relative;
   overflow: hidden;
 }
@@ -779,7 +647,7 @@ body {
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(135deg, rgba(212, 175, 55, 0.05), rgba(59, 130, 246, 0.05));
+  background: linear-gradient(135deg, rgba(239, 68, 68, 0.05), rgba(59, 130, 246, 0.05));
   opacity: 0;
   transition: opacity 0.4s ease;
 }
@@ -791,13 +659,15 @@ body {
 .contact-card:hover {
   transform: translateY(-10px);
   box-shadow: 
-    0 25px 50px rgba(212, 175, 55, 0.15),
-    0 0 0 1px rgba(212, 175, 55, 0.3);
+    0 25px 50px rgba(0, 0, 0, 0.1),
+    0 0 40px rgba(239, 68, 68, 0.1);
+  border-color: rgba(239, 68, 68, 0.3);
 }
 
 .contact-card:hover .contact-icon {
   transform: scale(1.2);
-  color: var(--gold);
+  color: var(--red);
+  filter: drop-shadow(0 0 10px rgba(239, 68, 68, 0.4));
 }
 
 .contact-icon {
@@ -806,7 +676,7 @@ body {
 }
 
 /* ========================================
-   CERTIFICATIONS
+   CERTIFICATIONS (LIGHT)
    ======================================== */
 .cert-item {
   transition: all 0.3s ease;
@@ -819,8 +689,8 @@ body {
 
 .cert-item:hover .cert-check {
   transform: scale(1.4);
-  color: var(--gold);
-  text-shadow: 0 0 15px rgba(212, 175, 55, 0.5);
+  color: var(--red);
+  text-shadow: 0 0 20px rgba(239, 68, 68, 0.6);
 }
 
 .cert-check {
@@ -837,32 +707,34 @@ body {
   top: 0;
   left: 0;
   height: 3px;
-  background: linear-gradient(90deg, var(--gold), var(--blue), var(--gold));
+  background: linear-gradient(90deg, var(--red), var(--blue), var(--red));
   background-size: 200% 100%;
   animation: gradient-shift 3s ease infinite;
   z-index: 100;
   box-shadow: 
-    0 0 10px rgba(212, 175, 55, 0.6),
-    0 0 20px rgba(59, 130, 246, 0.4);
+    0 0 15px rgba(239, 68, 68, 0.6),
+    0 0 30px rgba(59, 130, 246, 0.4);
 }
 
 /* ========================================
-   ICON HOVER
+   ICON HOVER (LIGHT)
    ======================================== */
 .icon-box {
-  background: linear-gradient(135deg, rgba(212, 175, 55, 0.15), rgba(59, 130, 246, 0.15));
+  background: linear-gradient(135deg, rgba(239, 68, 68, 0.1), rgba(59, 130, 246, 0.1));
   transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+  border: 1px solid rgba(239, 68, 68, 0.08);
 }
 
 .icon-box:hover {
   transform: scale(1.1) rotate(5deg);
   box-shadow: 
-    0 10px 30px rgba(212, 175, 55, 0.3),
-    0 0 40px rgba(59, 130, 246, 0.2);
+    0 10px 30px rgba(239, 68, 68, 0.2),
+    0 0 50px rgba(59, 130, 246, 0.15);
+  border-color: rgba(239, 68, 68, 0.2);
 }
 
 /* ========================================
-   CUSTOM SCROLLBAR
+   CUSTOM SCROLLBAR (LIGHT)
    ======================================== */
 ::-webkit-scrollbar {
   width: 10px;
@@ -873,20 +745,20 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(180deg, var(--gold), var(--blue));
+  background: linear-gradient(180deg, var(--red), var(--blue));
   border-radius: 5px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(180deg, var(--gold-dark), var(--blue-dark));
+  background: linear-gradient(180deg, var(--red-light), var(--blue-light));
 }
 
 /* ========================================
-   SELECTION
+   SELECTION (LIGHT)
    ======================================== */
 ::selection {
-  background: rgba(212, 175, 55, 0.3);
-  color: var(--gray-900);
+  background: rgba(239, 68, 68, 0.25);
+  color: var(--text-primary);
 }
 
 /* ========================================
@@ -894,7 +766,7 @@ body {
    ======================================== */
 a:focus-visible,
 button:focus-visible {
-  outline: 2px solid var(--gold);
+  outline: 2px solid var(--red);
   outline-offset: 3px;
   border-radius: 4px;
 }
@@ -907,8 +779,5 @@ button:focus-visible {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
-  }
-  .marquee-content {
-    animation: none;
   }
 }
