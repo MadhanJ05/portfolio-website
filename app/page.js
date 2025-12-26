@@ -2,7 +2,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { Github, Linkedin, Mail, Phone, MapPin, Code, Database, BarChart3, Brain, ChevronDown, ExternalLink, Award, FileText, Menu, X, Shield, Sparkles, ArrowUpRight } from 'lucide-react';
+import { Github, Linkedin, Mail, Phone, MapPin, Code, Database, BarChart3, Brain, ChevronDown, ExternalLink, Award, FileText, Menu, X, Shield, Sparkles, ArrowUpRight, Cloud, Cpu, Settings, Layers } from 'lucide-react';
 
 export default function Portfolio() {
   const [scrollY, setScrollY] = useState(0);
@@ -11,6 +11,14 @@ export default function Portfolio() {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [scrollProgress, setScrollProgress] = useState(0);
   const [visibleSections, setVisibleSections] = useState(new Set(['home']));
+  const [rotatingTextIndex, setRotatingTextIndex] = useState(0);
+  const [isTextVisible, setIsTextVisible] = useState(true);
+
+  const rotatingTexts = [
+    "Building data pipelines that scale",
+    "3 years of turning complex data into business value",
+    "Leveled up with a Master's in Analytics"
+  ];
 
   useEffect(() => {
     const handleScroll = () => {
@@ -57,11 +65,42 @@ export default function Portfolio() {
     return () => sections.forEach((section) => observer.unobserve(section));
   }, []);
 
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setIsTextVisible(false);
+      setTimeout(() => {
+        setRotatingTextIndex((prev) => (prev + 1) % rotatingTexts.length);
+        setIsTextVisible(true);
+      }, 400);
+    }, 2000);
+    return () => clearInterval(interval);
+  }, []);
+
   const skills = {
-    "Programming": ["Python", "SQL", "R", "Bash"],
-    "ML & Statistics": ["Scikit-learn", "Time Series", "Regression", "Clustering"],
-    "Visualization": ["Tableau", "Power BI", "Matplotlib", "Plotly"],
-    "Tools & Platforms": ["Git", "Docker", "Jenkins", "MySQL", "PostgreSQL"]
+    "Programming Languages": {
+      icon: <Code className="w-5 h-5 text-red-500" />,
+      items: ["Python", "SQL", "R", "Bash"]
+    },
+    "Frameworks": {
+      icon: <Settings className="w-5 h-5 text-red-500" />,
+      items: ["Apache Airflow", "Apache Kafka", "Apache Spark", "dbt", "Streamlit", "Scikit-learn", "Matplotlib", "Plotly"]
+    },
+    "Cloud & DevOps": {
+      icon: <Cloud className="w-5 h-5 text-red-500" />,
+      items: ["Git", "Docker", "Jenkins"]
+    },
+    "Databases": {
+      icon: <Database className="w-5 h-5 text-red-500" />,
+      items: ["PostgreSQL", "MySQL", "MongoDB", "Redis"]
+    },
+    "AI & ML": {
+      icon: <Cpu className="w-5 h-5 text-red-500" />,
+      items: ["Random Forest", "Logistic Regression", "K-Means Clustering", "Time Series", "Regression"]
+    },
+    "Visualization": {
+      icon: <BarChart3 className="w-5 h-5 text-red-500" />,
+      items: ["Tableau", "Power BI"]
+    }
   };
 
   const projects = [
@@ -74,10 +113,10 @@ export default function Portfolio() {
       github: "https://github.com/MadhanJ05/HM-fashion-data-warehouse"
     },
     {
-      title: "Real-Time Fraud Detection System",
-      desc: "End-to-end streaming fraud detection pipeline. Streams transactions through Kafka, calculates real-time features, detects fraud using rule-based algorithms, and visualizes results on a live dashboard.",
+      title: "Real-Time Credit Card Fraud Detection System",
+      desc: "An end-to-end streaming credit card transaction fraud detection pipeline that streams transactions through Kafka, computes real-time features, detects fraud using rule-based algorithms, and visualizes the results on a live dashboard.",
       tech: ["Apache Kafka", "MongoDB", "Pyspark", "Redis", "Streamlit"],
-      metrics: "Sub-second Detection",
+      metrics: "Live Monitoring",
       icon: <Shield className="w-5 h-5" />,
       github: "https://github.com/MadhanJ05/real-time-credit-card-fraud-detection"
     },
@@ -111,7 +150,6 @@ export default function Portfolio() {
     {
       role: "Systems Data Engineer",
       company: "Infosys",
-      location: "Chennai, India",
       period: "Nov 2021 - Sep 2023",
       achievements: [
         "Improved broadband performance by 15% by implementing predictive models (Isolation Forest, Random Forest Regression)",
@@ -122,7 +160,6 @@ export default function Portfolio() {
     {
       role: "Data Analyst Intern",
       company: "Infosys",
-      location: "Mysore, India",
       period: "May 2021 - Nov 2021",
       achievements: [
         "Automated data collection, cleaning and transformation processes using SQL and Python, reducing data preparation time by 30%",
@@ -165,7 +202,7 @@ export default function Portfolio() {
       <nav className="fixed top-0 w-full nav-glass z-50">
         <div className="max-w-6xl mx-auto px-6 py-4">
           <div className="flex justify-between items-center">
-            <div className="text-3xl font-bold gradient-gold cursor-pointer hover:scale-110 transition-transform duration-500 animate-text-glow">
+            <div className="text-3xl font-bold name-hover cursor-pointer hover:scale-110 transition-transform duration-500">
               MJ
             </div>
             
@@ -214,7 +251,7 @@ export default function Portfolio() {
           <div className={`mb-8 ${visibleSections.has('home') ? 'animate-slide-up' : 'opacity-0'}`}>
             <div className="inline-flex items-center gap-3 px-6 py-3 glass-card rounded-full hover:shadow-xl transition-all duration-500 cursor-default">
               <Sparkles className="w-5 h-5 text-red-500 animate-pulse" />
-              <span className="text-gray-600 text-sm tracking-widest uppercase font-medium">Data Science & Analytics</span>
+              <span className="text-gray-600 text-sm tracking-widest uppercase font-medium">Data Engineering & Analytics</span>
               <Sparkles className="w-5 h-5 text-blue-500 animate-pulse" />
             </div>
           </div>
@@ -224,17 +261,18 @@ export default function Portfolio() {
           </h1>
           
           <p className={`text-xl md:text-2xl text-gray-500 mb-6 font-light tracking-wide ${visibleSections.has('home') ? 'animate-slide-up delay-300' : 'opacity-0'}`}>
-            <span className="gradient-gold-blue font-semibold">Data Scientist</span> & <span className="gradient-gold-blue font-semibold">Analytics Professional</span>
+            <span className="name-hover font-semibold">Data Engineer</span> & <span className="name-hover font-semibold">Analytics Professional</span>
           </p>
           
-          <p className={`text-base text-gray-400 mb-12 max-w-2xl mx-auto leading-relaxed ${visibleSections.has('home') ? 'animate-slide-up delay-400' : 'opacity-0'}`}>
-            Master's student at Northeastern University with 2+ years of experience in predictive modeling, 
-            data engineering, and building scalable analytics solutions
-          </p>
+          <div className={`mb-12 h-10 ${visibleSections.has('home') ? 'animate-slide-up delay-400' : 'opacity-0'}`}>
+            <p className={`text-xl md:text-2xl text-gray-900 font-bold transition-all duration-500 ${isTextVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-2'}`}>
+              {rotatingTexts[rotatingTextIndex]}
+            </p>
+          </div>
           
           <div className={`flex flex-col sm:flex-row gap-4 justify-center mb-16 ${visibleSections.has('home') ? 'animate-slide-up delay-500' : 'opacity-0'}`}>
             <a href="mailto:jothimani.m@northeastern.edu" 
-               className="btn-gold px-10 py-4 rounded-full text-sm uppercase tracking-wider">
+               className="btn-red px-10 py-4 rounded-full text-sm uppercase tracking-wider">
               Get In Touch
             </a>
             <a href="#projects" 
@@ -274,8 +312,8 @@ export default function Portfolio() {
       <section id="projects" className="py-32 px-6 relative glow-section">
         <div className="max-w-6xl mx-auto">
           <div className={`text-center mb-20 ${visibleSections.has('projects') ? 'animate-slide-up' : 'opacity-0'}`}>
-            <p className="text-red-500 text-sm tracking-widest uppercase mb-4 font-semibold">Portfolio</p>
-            <h2 className="text-4xl md:text-6xl font-bold gradient-gold">
+            <p className="name-hover text-sm tracking-widest uppercase mb-4 font-semibold">Portfolio</p>
+            <h2 className="text-4xl md:text-6xl font-bold name-hover">
               Featured Projects
             </h2>
           </div>
@@ -300,14 +338,11 @@ export default function Portfolio() {
                 <p className="text-gray-500 mb-5 text-sm leading-relaxed">{project.desc}</p>
                 
                 <div className="flex flex-wrap gap-2 mb-5">
-                  {project.tech.slice(0, 4).map((tech, i) => (
+                  {project.tech.map((tech, i) => (
                     <span key={i} className="tech-tag text-xs px-3 py-1.5 rounded-full">
                       {tech}
                     </span>
                   ))}
-                  {project.tech.length > 4 && (
-                    <span className="text-xs px-3 py-1.5 text-gray-400 font-medium">+{project.tech.length - 4}</span>
-                  )}
                 </div>
                 
                 <a href={project.github} target="_blank" rel="noopener noreferrer" className="project-link text-sm">
@@ -326,8 +361,8 @@ export default function Portfolio() {
       <section id="experience" className="py-32 px-6 relative glow-section-blue">
         <div className="max-w-6xl mx-auto relative">
           <div className={`text-center mb-20 ${visibleSections.has('experience') ? 'animate-slide-up' : 'opacity-0'}`}>
-            <p className="text-blue-600 text-sm tracking-widest uppercase mb-4 font-semibold">Career</p>
-            <h2 className="text-4xl md:text-6xl font-bold gradient-blue">
+            <p className="name-hover text-sm tracking-widest uppercase mb-4 font-semibold">Career</p>
+            <h2 className="text-4xl md:text-6xl font-bold name-hover">
               Experience
             </h2>
           </div>
@@ -343,7 +378,6 @@ export default function Portfolio() {
                   <div>
                     <h3 className="text-xl md:text-2xl font-bold gradient-gold">{exp.role}</h3>
                     <p className="text-lg text-gray-600 font-semibold">{exp.company}</p>
-                    <p className="text-sm text-gray-400">{exp.location}</p>
                   </div>
                   <span className="text-gray-500 mt-2 md:mt-0 text-sm tracking-wider bg-gray-100 px-4 py-2 rounded-full font-medium">{exp.period}</span>
                 </div>
@@ -399,26 +433,26 @@ export default function Portfolio() {
       <section id="skills" className="py-32 px-6 glow-section-mixed">
         <div className="max-w-6xl mx-auto">
           <div className={`text-center mb-20 ${visibleSections.has('skills') ? 'animate-slide-up' : 'opacity-0'}`}>
-            <p className="text-red-500 text-sm tracking-widest uppercase mb-4 font-semibold">Expertise</p>
-            <h2 className="text-4xl md:text-6xl font-bold gradient-gold-blue">
+            <p className="name-hover text-sm tracking-widest uppercase mb-4 font-semibold">Expertise</p>
+            <h2 className="text-4xl md:text-6xl font-bold name-hover">
               Technical Skills
             </h2>
           </div>
           
-          <div className="grid md:grid-cols-2 gap-6">
-            {Object.entries(skills).map(([category, items], idx) => (
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+            {Object.entries(skills).map(([category, { icon, items }], idx) => (
               <div 
                 key={category} 
-                className={`skill-card rounded-2xl p-6 shadow-lg ${visibleSections.has('skills') ? 'animate-slide-up' : 'opacity-0'}`}
+                className={`skill-card rounded-xl p-4 shadow-lg ${visibleSections.has('skills') ? 'animate-slide-up' : 'opacity-0'}`}
                 style={{ animationDelay: `${idx * 100}ms` }}
               >
-                <h3 className="text-lg font-bold mb-5 gradient-blue flex items-center gap-3">
-                  <Code className="w-5 h-5 text-red-500" />
+                <h3 className="text-sm font-bold mb-3 text-red-500 flex items-center gap-2">
+                  {icon}
                   {category}
                 </h3>
-                <div className="flex flex-wrap gap-2">
+                <div className="flex flex-wrap gap-1.5">
                   {items.map((skill, i) => (
-                    <span key={i} className="tech-tag px-4 py-2 rounded-lg text-sm cursor-default">
+                    <span key={i} className="tech-tag px-3 py-1 rounded-md text-xs cursor-default">
                       {skill}
                     </span>
                   ))}
@@ -428,17 +462,16 @@ export default function Portfolio() {
           </div>
 
           {/* Certifications */}
-          <div className={`mt-12 skill-card rounded-2xl p-8 shadow-lg ${visibleSections.has('skills') ? 'animate-slide-up delay-400' : 'opacity-0'}`}>
-            <h3 className="text-xl font-bold mb-8 gradient-gold flex items-center gap-3">
-              <Award className="w-6 h-6 text-blue-500" />
+          <div className={`mt-8 skill-card rounded-xl p-4 shadow-lg ${visibleSections.has('skills') ? 'animate-slide-up delay-400' : 'opacity-0'}`}>
+            <h3 className="text-sm font-bold mb-3 text-red-500 flex items-center gap-2">
+              <Award className="w-4 h-4 text-red-500" />
               Certifications
             </h3>
-            <div className="grid md:grid-cols-2 gap-4">
+            <div className="flex flex-wrap gap-1.5">
               {certifications.map((cert, i) => (
-                <div key={i} className="cert-item flex items-center gap-4 text-gray-600 cursor-default">
-                  <span className="cert-check text-lg">✓</span>
-                  <span className="text-sm font-medium">{cert}</span>
-                </div>
+                <span key={i} className="tech-tag px-3 py-1 rounded-md text-xs cursor-default">
+                  {cert}
+                </span>
               ))}
             </div>
           </div>
@@ -452,16 +485,20 @@ export default function Portfolio() {
       <section id="contact" className="py-32 px-6 relative glow-section">
         <div className="max-w-4xl mx-auto text-center relative">
           <div className={`mb-16 ${visibleSections.has('contact') ? 'animate-slide-up' : 'opacity-0'}`}>
-            <p className="text-blue-600 text-sm tracking-widest uppercase mb-4 font-semibold">Get In Touch</p>
-            <h2 className="text-4xl md:text-6xl font-bold gradient-gold-blue mb-6">
+            <p className="name-hover text-sm tracking-widest uppercase mb-4 font-semibold">Get In Touch</p>
+            <h2 className="text-4xl md:text-6xl font-bold name-hover mb-6">
               Let's Connect
             </h2>
-            <p className="text-gray-500 max-w-xl mx-auto text-lg">
-              Currently seeking Data Science Intern opportunities. Let's discuss how I can contribute to your team.
+            <p className="text-gray-900 font-bold max-w-xl mx-auto text-lg">
+              I am ready to bring 3 years of data analytics expertise to your team.
             </p>
           </div>
           
           <div className={`grid sm:grid-cols-3 gap-6 mb-12 ${visibleSections.has('contact') ? 'animate-slide-up delay-200' : 'opacity-0'}`}>
+            <a href="http://www.linkedin.com/in/madhanjothimani" target="_blank" rel="noopener noreferrer" className="contact-card flex flex-col items-center justify-center gap-4 p-8 rounded-2xl shadow-lg">
+              <Linkedin className="contact-icon w-8 h-8" />
+              <span className="text-sm text-gray-600 font-semibold">LinkedIn</span>
+            </a>
             <a href="mailto:jothimani.m@northeastern.edu" className="contact-card flex flex-col items-center justify-center gap-4 p-8 rounded-2xl shadow-lg">
               <Mail className="contact-icon w-8 h-8" />
               <span className="text-sm text-gray-600 font-semibold">Email</span>
@@ -470,10 +507,6 @@ export default function Portfolio() {
               <Phone className="contact-icon w-8 h-8" />
               <span className="text-sm text-gray-600 font-semibold">Phone</span>
             </a>
-            <div className="contact-card flex flex-col items-center justify-center gap-4 p-8 rounded-2xl shadow-lg">
-              <MapPin className="contact-icon w-8 h-8" />
-              <span className="text-sm text-gray-600 font-semibold">Boston, MA</span>
-            </div>
           </div>
           
           <div className={`flex gap-5 justify-center ${visibleSections.has('contact') ? 'animate-slide-up delay-300' : 'opacity-0'}`}>
