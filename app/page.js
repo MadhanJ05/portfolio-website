@@ -148,7 +148,7 @@ export default function Portfolio() {
 
   const experience = [
     {
-      role: "Systems Data Engineer",
+      role: "Data Engineer",
       company: "Infosys",
       period: "Nov 2021 - Sep 2023",
       achievements: [
