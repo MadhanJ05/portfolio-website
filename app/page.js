@@ -158,7 +158,7 @@ export default function Portfolio() {
       ]
     },
     {
-      role: "Data Analyst Intern",
+      role: "Data Science Intern",
       company: "Infosys",
       period: "May 2021 - Nov 2021",
       achievements: [
@@ -367,19 +367,19 @@ export default function Portfolio() {
             </h2>
           </div>
           
-          <div className="space-y-6">
+          <div className="grid md:grid-cols-2 gap-6">
             {experience.map((exp, idx) => (
               <div 
                 key={idx} 
                 className={`experience-card rounded-2xl p-8 shadow-lg ${visibleSections.has('experience') ? 'animate-slide-up' : 'opacity-0'}`}
                 style={{ animationDelay: `${idx * 150}ms` }}
               >
-                <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-6">
+                <div className="flex flex-col mb-6">
                   <div>
                     <h3 className="text-xl md:text-2xl font-bold gradient-gold">{exp.role}</h3>
                     <p className="text-lg text-gray-600 font-semibold">{exp.company}</p>
                   </div>
-                  <span className="text-gray-500 mt-2 md:mt-0 text-sm tracking-wider bg-gray-100 px-4 py-2 rounded-full font-medium">{exp.period}</span>
+                  <span className="text-gray-500 mt-2 text-sm tracking-wider bg-gray-100 px-4 py-2 rounded-full font-medium w-fit">{exp.period}</span>
                 </div>
                 
                 <ul className="space-y-3">
