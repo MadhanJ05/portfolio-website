@@ -329,7 +329,7 @@ export default function Portfolio() {
                   <div className="icon-box w-12 h-12 rounded-xl flex items-center justify-center text-red-500">
                     {project.icon}
                   </div>
-                  <span className="text-xs text-blue-600 px-3 py-1.5 bg-blue-50 rounded-full border border-blue-100 font-semibold">
+                  <span className="text-xs text-red-500 px-3 py-1.5 bg-red-50 rounded-full border border-red-100 font-semibold">
                     {project.metrics}
                   </span>
                 </div>
@@ -400,7 +400,7 @@ export default function Portfolio() {
               <div className="icon-box p-3 rounded-xl">
                 <FileText className="w-6 h-6 text-blue-600" />
               </div>
-              <h3 className="text-2xl font-bold gradient-blue">Education</h3>
+              <h3 className="text-2xl font-bold text-red-500">Education</h3>
             </div>
             
             <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-6">
