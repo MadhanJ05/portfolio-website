@@ -181,8 +181,8 @@ export default function Portfolio() {
     degree: "Master of Professional Studies in Analytics",
     school: "Northeastern University",
     location: "Boston, Massachusetts",
-    period: "July 2024 - Apr 2026",
-    courses: ["Data Visualization", "Enterprise Analytics", "Intermediate Analytics", "Database Management", "Probability"]
+    period: "July 2024 - Mar 2026",
+    courses: ["Predictive Analytics", "Enterprise Analytics", "Data Warehousing", "Data Visualization", "Risk-Management for Analytics"]
   };
 
   return (
