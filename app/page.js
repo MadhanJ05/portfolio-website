@@ -152,9 +152,9 @@ export default function Portfolio() {
       company: "Infosys",
       period: "Nov 2021 - Sep 2023",
       achievements: [
-        "Designed and maintained data pipelines using Docker and Jenkins for continuous integration and testing",
-        "Wrote SQL queries and Python scripts to extract, transform, and load data from multiple sources",
-        "Collaborated with engineering teams to improve data workflows and support product releases"
+        "Built and optimized ETL pipelines using Kafka and Airflow to process broadband device data, improving data availability",
+        "Designed and maintained end-to-end data pipelines using Docker and Jenkins, enabling automated CI/CD and reducing deployment time by 35%",
+        "Implemented predictive models (Isolation forest, Randon forest regression) to detect network anomalies, improving broadband performance by 15%"
       ]
     },
     {
@@ -162,8 +162,8 @@ export default function Portfolio() {
       company: "Infosys",
       period: "May 2021 - Nov 2021",
       achievements: [
-        "Developed predictive models using Python and Scikit-learn to support business decisions",
-        "Performed feature engineering on CRM data to improve model accuracy by 12%",
+        "Performed exploratory data analysis on credit card transaction data to segment customers and developed predictive models to forecast customer churn and purchase trends, improving model accuracy by 12%",
+        "Applied feature engineering on CRM and transactional datasets to improve segmentation and campaign targeting",
         "Created interactive dashboards in Tableau to present model insights to stakeholders"
       ]
     }
