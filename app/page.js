@@ -119,7 +119,7 @@ export default function Portfolio() {
       tech: ["Llama 3.3 70B", "Groq API", "PostgreSQL", "Neon", "Streamlit", "Python", "LangChain"],
       metrics: "NLP",
       icon: <MessageSquare className="w-5 h-5" />,
-      github: "https://github.com/MadhanJ05/talk-to-data"
+      github: "https://github.com/MadhanJ05/talk-to-data-sql-chatbot"
 
     },
     {
