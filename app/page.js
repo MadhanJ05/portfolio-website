@@ -3,6 +3,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { Github, Linkedin, Mail, Phone, MapPin, Code, Database, BarChart3, Brain, ChevronDown, ExternalLink, Award, FileText, Menu, X, Shield, Sparkles, ArrowUpRight, Cloud, Cpu, Settings, Layers } from 'lucide-react';
+import { MessageSquare } from "lucide-react";
 
 export default function Portfolio() {
   const [scrollY, setScrollY] = useState(0);
@@ -111,6 +112,15 @@ export default function Portfolio() {
       metrics: "15M+ Transactions",
       icon: <Database className="w-5 h-5" />,
       github: "https://github.com/MadhanJ05/HM-fashion-data-warehouse"
+    },
+    {
+      title: "Talk to Data - AI SQL Chatbot",
+      desc: "Built an AI-powered SQL chatbot that converts natural language questions into SQL queries using Llama 3.3 70B via Groq API, connected to a PostgreSQL database with 16K+ rental transactions, featuring real-time query generation, validation, and interactive Streamlit UI.",
+      tech: ["Llama 3.3 70B", "Groq API", "PostgreSQL", "Neon", "Streamlit", "Python", "LangChain"],
+      metrics: "NLP",
+      icon: <MessageSquare className="w-5 h-5" />,
+      github: "https://github.com/MadhanJ05/talk-to-data"
+
     },
     {
       title: "Real-Time Credit Card Fraud Detection System",
