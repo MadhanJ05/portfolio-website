@@ -106,13 +106,14 @@ export default function Portfolio() {
 
   const projects = [
     {
-      title: "H&M Fashion Data Warehouse",
-      desc: "Built a production-grade data warehouse processing 15M+ fashion retail transactions across 1M customers and 105K products, implementing automated ELT pipelines with Airflow, dbt transformations, and interactive Streamlit dashboards.",
-      tech: ["Apache Airflow", "Docker", "PostgreSQL", "dbt", "Streamlit", "Python"],
-      metrics: "15M+ Transactions",
-      icon: <Database className="w-5 h-5" />,
-      github: "https://github.com/MadhanJ05/HM-fashion-data-warehouse"
+      title: "Marketplace Product Retrieval and Ranking System",
+      desc: "Built an AI-powered B2B product search system combining LLM query understanding (Groq), hybrid retrieval (BM25 + FAISS), CrossEncoder neural reranking, and wholesale boost scoring. Evaluated on Amazon ESCI dataset with 100K products.",
+      tech: ["FAISS", "Sentence Transformers", "CrossEncoder", "Streamlit", "Python", "Groq LLM"],
+      metrics: "100K Products • 5-Stage Pipeline",
+      icon: <Search className="w-5 h-5" />,
+      github: "https://github.com/MadhanJ05/wholesale-product-retrieval"
     },
+
     {
       title: "Talk to Data - AI SQL Chatbot",
       desc: "Built an AI-powered SQL chatbot that converts natural language questions into SQL queries using Llama 3.3 70B via Groq API, connected to a PostgreSQL database with 16K+ rental transactions, featuring real-time query generation, validation, and interactive Streamlit UI.",
@@ -122,6 +123,16 @@ export default function Portfolio() {
       github: "https://github.com/MadhanJ05/talk-to-data-sql-chatbot"
 
     },
+
+     {
+      title: "H&M Fashion Data Warehouse",
+      desc: "Built a production-grade data warehouse processing 15M+ fashion retail transactions across 1M customers and 105K products, implementing automated ELT pipelines with Airflow, dbt transformations, and interactive Streamlit dashboards.",
+      tech: ["Apache Airflow", "Docker", "PostgreSQL", "dbt", "Streamlit", "Python"],
+      metrics: "15M+ Transactions",
+      icon: <Database className="w-5 h-5" />,
+      github: "https://github.com/MadhanJ05/HM-fashion-data-warehouse"
+    },
+    
     {
       title: "Real-Time Credit Card Fraud Detection System",
       desc: "An end-to-end streaming credit card transaction fraud detection pipeline that streams transactions through Kafka, computes real-time features, detects fraud using rule-based algorithms, and visualizes the results on a live dashboard.",
@@ -145,15 +156,8 @@ export default function Portfolio() {
       metrics: "92.3% Accuracy",
       icon: <Brain className="w-5 h-5" />,
       github: "https://github.com/MadhanJ05/Boston_Fire_Incident_Analysis"
-    },
-    {
-      title: "British Airways Dashboard",
-      desc: "Designed interactive dashboard analyzing flight delays, passenger satisfaction, and operational performance using advanced Tableau features.",
-      tech: ["Tableau", "Data Visualization", "Dashboard Design"],
-      metrics: "Real-time Tracking",
-      icon: <Database className="w-5 h-5" />,
-      github: "https://github.com/MadhanJ05/BritishAirways_Interactive_Dashboard"
     }
+    
   ];
 
   const experience = [
