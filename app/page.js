@@ -2,7 +2,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { Github, Linkedin, Mail, Phone, MapPin, Code, Database, BarChart3, Brain, ChevronDown, ExternalLink, Award, FileText, Menu, X, Shield, Sparkles, ArrowUpRight, Cloud, Cpu, Settings, Layers } from 'lucide-react';
+import { Github, Linkedin, Mail, Phone, MapPin, Code, Database, BarChart3, Brain, ChevronDown, ExternalLink, Award, FileText, Menu, X, Shield, Sparkles, ArrowUpRight, Cloud, Cpu, Settings, Layers, Search } from 'lucide-react';
 import { MessageSquare } from "lucide-react";
 
 export default function Portfolio() {
