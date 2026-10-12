@@ -2,7 +2,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { Github, Linkedin, Mail, Phone, MapPin, Code, Database, BarChart3, Brain, ChevronDown, ExternalLink, Award, FileText, Menu, X, Shield, Sparkles, ArrowUpRight, Cloud, Cpu, Settings, Layers, Search } from 'lucide-react';
+import { Github, Linkedin, Mail, Phone, MapPin, Code, Database, BarChart3, Brain, ChevronDown, ExternalLink, Award, FileText, Menu, X, Shield, Sparkles, ArrowUpRight, Cloud, Cpu, Settings, Layers, Search, Trophy, TrendingUp, Activity, Sigma, Users } from 'lucide-react';
 import { MessageSquare } from "lucide-react";
 
 export default function Portfolio() {
@@ -16,9 +16,9 @@ export default function Portfolio() {
   const [isTextVisible, setIsTextVisible] = useState(true);
 
   const rotatingTexts = [
-    "Building data pipelines that scale",
-    "3 years of turning complex data into business value",
-    "Leveled up with a Master's in Analytics"
+    "Pricing options, testing strategies, catching overfitting",
+    "Early-warning ML for trading platforms, sponsored by PayPal",
+    "#1 worldwide on an open math optimization problem"
   ];
 
   useEffect(() => {
@@ -26,7 +26,7 @@ export default function Portfolio() {
       setScrollY(window.scrollY);
       const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
       setScrollProgress((window.scrollY / totalHeight) * 100);
-      const sections = ['home', 'projects', 'experience', 'skills', 'contact'];
+      const sections = ['home', 'awards', 'projects', 'experience', 'skills', 'contact'];
       const current = sections.find(section => {
         const el = document.getElementById(section);
         if (el) {
@@ -73,14 +73,18 @@ export default function Portfolio() {
         setRotatingTextIndex((prev) => (prev + 1) % rotatingTexts.length);
         setIsTextVisible(true);
       }, 400);
-    }, 2000);
+    }, 3000);
     return () => clearInterval(interval);
   }, []);
 
   const skills = {
+    "Quantitative Methods": {
+      icon: <TrendingUp className="w-5 h-5 text-red-500" />,
+      items: ["Derivatives Pricing", "Monte Carlo", "Backtesting", "Overfitting Tests (DSR, PBO)", "Time-Series Forecasting"]
+    },
     "Programming Languages": {
       icon: <Code className="w-5 h-5 text-red-500" />,
-      items: ["Python", "SQL", "R", "Bash"]
+      items: ["Python", "SQL", "R", "Bash", "Excel"]
     },
     "Frameworks": {
       icon: <Settings className="w-5 h-5 text-red-500" />,
@@ -88,7 +92,7 @@ export default function Portfolio() {
     },
     "Cloud & DevOps": {
       icon: <Cloud className="w-5 h-5 text-red-500" />,
-      items: ["Git", "Docker", "Jenkins"]
+      items: ["Git", "Docker", "Jenkins", "CI/CD", "GCP"]
     },
     "Databases": {
       icon: <Database className="w-5 h-5 text-red-500" />,
@@ -96,7 +100,7 @@ export default function Portfolio() {
     },
     "AI & ML": {
       icon: <Cpu className="w-5 h-5 text-red-500" />,
-      items: ["Random Forest", "Logistic Regression", "K-Means Clustering", "Time Series", "Regression"]
+      items: ["XGBoost", "Random Forest", "Isolation Forest", "Logistic Regression", "K-Means Clustering", "Time Series", "Regression", "SHAP Explainability", "LLM Agents", "RAG"]
     },
     "Visualization": {
       icon: <BarChart3 className="w-5 h-5 text-red-500" />,
@@ -105,6 +109,30 @@ export default function Portfolio() {
   };
 
   const projects = [
+    {
+      title: "VOLTEX: Volatility-Triggered Early-Warning System",
+      desc: "Led a 3-person team (sponsor: PayPal) building a system that predicts trading-platform stress from equity-market signals (505 S&P 500 tickers, VIX, FOMC/CPI/NFP events) and alerts on-call SREs before outages. An XGBoost risk-tier classifier with Prophet/ARIMA forecasts and Isolation Forest reached macro-F1 0.79 vs. a 0.61 baseline and flagged 6 of 6 historical crises; a guardrailed RAG agent turns SHAP drivers into auditable alerts.",
+      tech: ["XGBoost", "Prophet", "ARIMA", "Isolation Forest", "SHAP", "Gemini", "ChromaDB", "Python"],
+      metrics: "Best Project • PayPal",
+      icon: <Activity className="w-5 h-5" />,
+      github: "https://github.com/MadhanJ05/Voltex"
+    },
+    {
+      title: "Quant Strategy Search: Overfitting-Aware Backtesting",
+      desc: "Built a vectorized backtesting engine that searches 240 momentum and mean-reversion strategies across 15 ETFs (2007–2025) with transaction costs, walk-forward validation, and a 36-test suite proving no lookahead bias. Deflated Sharpe Ratio, PBO via CSCV (12,870 splits), and block-bootstrap CIs showed the top backtest (Sharpe 0.80) was likely luck (DSR 0.29).",
+      tech: ["Python", "Backtesting", "Deflated Sharpe Ratio", "PBO / CSCV", "Bootstrap"],
+      metrics: "240 Strategies • 15 ETFs",
+      icon: <TrendingUp className="w-5 h-5" />,
+      github: "https://github.com/MadhanJ05/strategy-search"
+    },
+    {
+      title: "Quant Options Engine: Pricing, IV & Variance Risk Premium",
+      desc: "Built a pricing engine (Black-Scholes, binomial tree, Monte Carlo) whose methods agree within 2 standard errors, with a control variate that cut Asian-option variance 1,385× and a 310-test suite. Extracted the SPY implied-volatility smile from 1,991 quotes and measured the variance risk premium across 228 monthly delta-hedged options: VIX exceeded realized vol by 3.6 points on average.",
+      tech: ["Python", "Black-Scholes", "Monte Carlo", "Binomial Tree", "Implied Volatility"],
+      metrics: "1,385× Variance Reduction",
+      icon: <Sigma className="w-5 h-5" />,
+      github: "https://github.com/MadhanJ05/options-lab"
+    },
     {
       title: "Marketplace Product Retrieval and Ranking System",
       desc: "Built an AI-powered B2B product search system combining LLM query understanding (Groq), hybrid retrieval (BM25 + FAISS), CrossEncoder neural reranking, and wholesale boost scoring. Evaluated on Amazon ESCI dataset with 100K products.",
@@ -162,28 +190,58 @@ export default function Portfolio() {
 
   const experience = [
     {
-      role: "Data Engineer",
+      role: "Systems Engineer",
       company: "Infosys",
-      period: "Nov 2021 - Sep 2023",
+      location: "Chennai & Mysore, India",
+      period: "May 2021 - Sep 2023",
       achievements: [
-        "Built and optimized ETL pipelines using Kafka and Airflow to process broadband device data, improving data availability",
-        "Designed and maintained end-to-end data pipelines using Docker and Jenkins, enabling automated CI/CD and reducing deployment time by 35%",
-        "Implemented predictive models (Isolation forest, Randon forest regression) to detect network anomalies, improving broadband performance by 15%"
-      ]
-    },
-    {
-      role: "Data Science Intern",
-      company: "Infosys",
-      period: "May 2021 - Nov 2021",
-      achievements: [
-        "Performed exploratory data analysis on credit card transaction data to segment customers and developed predictive models to forecast customer churn and purchase trends, improving model accuracy by 12%",
-        "Applied feature engineering on CRM and transactional datasets to improve segmentation and campaign targeting",
-        "Created interactive dashboards in Tableau to present model insights to stakeholders"
+        "Built and optimized batch and streaming pipelines (Kafka, Airflow) for broadband device telemetry analytics",
+        "Developed and productionized anomaly detection and regression models (Isolation Forest, Random Forest) on device telemetry to surface network performance issues, improving service performance by ~15%",
+        "Automated CI/CD with Docker and Jenkins, cutting deployment time by ~35% and improving release reliability"
       ]
     }
   ];
 
+  const awards = [
+    {
+      title: "#1 Worldwide, K4 Ramsey Multiplicity Leaderboard",
+      org: "RSI House OpenMath",
+      date: "2026",
+      desc: "Architected a recursive self-improvement optimization loop layer by layer: designed the objective function and constraint set, chose the construction shapes pursued each iteration, and achieved the world's top score on an open extremal combinatorics problem.",
+      icon: <Trophy className="w-5 h-5" />
+    },
+    {
+      title: "Best Project, Selected by PayPal",
+      org: "Sponsor Award",
+      date: "2026",
+      desc: "VOLTEX trading-platform early-warning system.",
+      icon: <Award className="w-5 h-5" />
+    },
+    {
+      title: "Best Hack, Sundai Hack 142",
+      org: "Sundai Club, MIT",
+      date: "2026",
+      desc: "Selected with a teammate; presented the Ramsey proof at Sundai Club, MIT.",
+      icon: <Award className="w-5 h-5" />
+    },
+    {
+      title: "Winner, Dell x NVIDIA Local AI Agent Hackathon",
+      org: "Boston",
+      date: "Oct 2026",
+      desc: "Led the team that built Lifeline, an on-device AI agent for earthquake search and rescue that combines WiFi sensing with satellite damage data, running on a Dell Pro Max GB10.",
+      icon: <Trophy className="w-5 h-5" />
+    },
+    {
+      title: "Technical Volunteer, Boston Claude Community",
+      org: "Community",
+      date: "Sep 2026",
+      desc: "Supported builders at two Claude community events in Boston.",
+      icon: <Users className="w-5 h-5" />
+    }
+  ];
+
   const certifications = [
+    "Bloomberg Finance Fundamentals (Bloomberg L.P., 2026)",
     "Machine Learning (Stanford Online)",
     "K-Means Clustering in Python (University of London)",
     "Intermediate Machine Learning (Kaggle)",
@@ -191,13 +249,22 @@ export default function Portfolio() {
     "Azure Administration Essential Training"
   ];
 
-  const education = {
-    degree: "Master of Professional Studies in Analytics",
-    school: "Northeastern University",
-    location: "Boston, Massachusetts",
-    period: "July 2024 - Mar 2026",
-    courses: ["Predictive Analytics", "Enterprise Analytics", "Data Warehousing", "Data Visualization", "Risk-Management for Analytics"]
-  };
+  const education = [
+    {
+      degree: "Master of Professional Studies in Analytics",
+      school: "Northeastern University",
+      location: "Boston, Massachusetts",
+      period: "Jul 2024 - Dec 2026 (expected)",
+      courses: ["Statistics", "Machine Learning", "Data Mining", "Data Management & Warehousing", "Visualization"]
+    },
+    {
+      degree: "Bachelor of Engineering in Electronics and Communication Engineering",
+      school: "Anna University",
+      location: "Chennai, India",
+      period: "Aug 2016 - Sep 2020",
+      courses: []
+    }
+  ];
 
   return (
     <div className="min-h-screen bg-[#fafafa] text-gray-800 relative overflow-x-hidden">
@@ -221,7 +288,7 @@ export default function Portfolio() {
             </div>
             
             <div className="hidden md:flex gap-10">
-              {['Home', 'Projects', 'Experience', 'Skills', 'Contact'].map((item) => (
+              {['Home', 'Awards', 'Projects', 'Experience', 'Skills', 'Contact'].map((item) => (
                 <a
                   key={item}
                   href={`#${item.toLowerCase()}`}
@@ -244,7 +311,7 @@ export default function Portfolio() {
 
           {mobileMenuOpen && (
             <div className="md:hidden mt-4 pb-4 flex flex-col gap-4 animate-slide-up">
-              {['Home', 'Projects', 'Experience', 'Skills', 'Contact'].map((item) => (
+              {['Home', 'Awards', 'Projects', 'Experience', 'Skills', 'Contact'].map((item) => (
                 <a
                   key={item}
                   href={`#${item.toLowerCase()}`}
@@ -265,7 +332,7 @@ export default function Portfolio() {
           <div className={`mb-8 ${visibleSections.has('home') ? 'animate-slide-up' : 'opacity-0'}`}>
             <div className="inline-flex items-center gap-3 px-6 py-3 glass-card rounded-full hover:shadow-xl transition-all duration-500 cursor-default">
               <Sparkles className="w-5 h-5 text-red-500 animate-pulse" />
-              <span className="text-gray-600 text-sm tracking-widest uppercase font-medium">Data Engineering & Analytics</span>
+              <span className="text-gray-600 text-sm tracking-widest uppercase font-medium">Quantitative Finance · Machine Learning</span>
               <Sparkles className="w-5 h-5 text-blue-500 animate-pulse" />
             </div>
           </div>
@@ -275,7 +342,7 @@ export default function Portfolio() {
           </h1>
           
           <p className={`text-xl md:text-2xl text-gray-500 mb-6 font-light tracking-wide ${visibleSections.has('home') ? 'animate-slide-up delay-300' : 'opacity-0'}`}>
-            <span className="name-hover font-semibold">Data Engineer</span> & <span className="name-hover font-semibold">Analytics Professional</span>
+            <span className="name-hover font-semibold">Quant & Machine Learning</span> · <span className="name-hover font-semibold">Data Scientist</span>
           </p>
           
           <div className={`mb-12 h-10 ${visibleSections.has('home') ? 'animate-slide-up delay-400' : 'opacity-0'}`}>
@@ -315,6 +382,44 @@ export default function Portfolio() {
           
           <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 hidden md:block">
             <ChevronDown className="w-8 h-8 text-red-500/50 animate-bounce" />
+          </div>
+        </div>
+      </section>
+
+      {/* Gradient Divider */}
+      <div className="gradient-divider-thick" />
+
+      {/* Awards Section */}
+      <section id="awards" className="py-32 px-6 relative glow-section-blue">
+        <div className="max-w-6xl mx-auto">
+          <div className={`text-center mb-20 ${visibleSections.has('awards') ? 'animate-slide-up' : 'opacity-0'}`}>
+            <p className="name-hover text-sm tracking-widest uppercase mb-4 font-semibold">Recognition</p>
+            <h2 className="text-4xl md:text-6xl font-bold name-hover">
+              Awards & Community
+            </h2>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {awards.map((award, idx) => (
+              <div
+                key={idx}
+                className={`project-card rounded-2xl p-6 ${visibleSections.has('awards') ? 'animate-slide-up' : 'opacity-0'}`}
+                style={{ animationDelay: `${idx * 100}ms` }}
+              >
+                <div className="flex items-center justify-between mb-4">
+                  <div className="icon-box w-12 h-12 rounded-xl flex items-center justify-center text-red-500">
+                    {award.icon}
+                  </div>
+                  <span className="text-xs text-red-500 px-3 py-1.5 bg-red-50 rounded-full border border-red-100 font-semibold">
+                    {award.date}
+                  </span>
+                </div>
+
+                <h3 className="text-lg font-bold mb-1 text-gray-800">{award.title}</h3>
+                <p className="text-sm text-blue-500 font-semibold mb-3">{award.org}</p>
+                <p className="text-gray-500 text-sm leading-relaxed">{award.desc}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
@@ -381,7 +486,7 @@ export default function Portfolio() {
             </h2>
           </div>
           
-          <div className="grid md:grid-cols-2 gap-6">
+          <div className="grid gap-6">
             {experience.map((exp, idx) => (
               <div 
                 key={idx} 
@@ -392,6 +497,7 @@ export default function Portfolio() {
                   <div>
                     <h3 className="text-xl md:text-2xl font-bold gradient-gold">{exp.role}</h3>
                     <p className="text-lg text-gray-600 font-semibold">{exp.company}</p>
+                    <p className="text-sm text-gray-400">{exp.location}</p>
                   </div>
                   <span className="text-gray-500 mt-2 text-sm tracking-wider bg-gray-100 px-4 py-2 rounded-full font-medium w-fit">{exp.period}</span>
                 </div>
@@ -417,24 +523,32 @@ export default function Portfolio() {
               <h3 className="text-2xl font-bold text-red-500">Education</h3>
             </div>
             
-            <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-6">
-              <div>
-                <h4 className="text-xl font-bold text-gray-800">{education.degree}</h4>
-                <p className="text-lg text-gray-600 font-semibold">{education.school}</p>
-                <p className="text-sm text-gray-400">{education.location}</p>
-              </div>
-              <span className="text-gray-500 mt-2 md:mt-0 text-sm tracking-wider bg-gray-100 px-4 py-2 rounded-full font-medium">{education.period}</span>
-            </div>
-            
-            <div className="mt-6">
-              <p className="text-gray-500 mb-3 text-sm tracking-wider uppercase font-semibold">Key Courses</p>
-              <div className="flex flex-wrap gap-2">
-                {education.courses.map((course, i) => (
-                  <span key={i} className="tech-tag text-xs px-4 py-2 rounded-full">
-                    {course}
-                  </span>
-                ))}
-              </div>
+            <div className="space-y-10">
+              {education.map((edu, idx) => (
+                <div key={idx}>
+                  <div className="flex flex-col md:flex-row md:items-center md:justify-between">
+                    <div>
+                      <h4 className="text-xl font-bold text-gray-800">{edu.degree}</h4>
+                      <p className="text-lg text-gray-600 font-semibold">{edu.school}</p>
+                      <p className="text-sm text-gray-400">{edu.location}</p>
+                    </div>
+                    <span className="text-gray-500 mt-2 md:mt-0 text-sm tracking-wider bg-gray-100 px-4 py-2 rounded-full font-medium w-fit shrink-0">{edu.period}</span>
+                  </div>
+
+                  {edu.courses.length > 0 && (
+                    <div className="mt-6">
+                      <p className="text-gray-500 mb-3 text-sm tracking-wider uppercase font-semibold">Relevant Coursework</p>
+                      <div className="flex flex-wrap gap-2">
+                        {edu.courses.map((course, i) => (
+                          <span key={i} className="tech-tag text-xs px-4 py-2 rounded-full">
+                            {course}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+                </div>
+              ))}
             </div>
           </div>
         </div>
@@ -504,7 +618,7 @@ export default function Portfolio() {
               Let's Connect
             </h2>
             <p className="text-gray-900 font-bold max-w-xl mx-auto text-lg">
-              I am ready to bring 3 years of data analytics expertise to your team.
+              Looking for roles where rigorous modeling meets real markets.
             </p>
           </div>
           

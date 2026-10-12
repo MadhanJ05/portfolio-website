@@ -5,8 +5,8 @@ import './globals.css'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata = {
-  title: 'Madhan Jothimani - Data Science Portfolio',
-  description: 'Data Scientist & Analytics Professional with expertise in ML, Python, and Data Engineering',
+  title: 'Madhan Jothimani - Quant & Machine Learning',
+  description: 'Data scientist working across quantitative finance and machine learning: derivatives pricing, overfitting-aware backtesting, and ML early-warning systems for trading platforms',
 }
 
 export default function RootLayout({ children }) {

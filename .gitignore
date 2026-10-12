@@ -39,3 +39,6 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# resume
+Madhan_Jothimani_Resume_BC_MSF.docx
