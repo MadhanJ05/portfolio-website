@@ -2,7 +2,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { Github, Linkedin, Mail, Phone, MapPin, Code, Database, BarChart3, Brain, ChevronDown, ExternalLink, Award, FileText, Menu, X, Shield, Sparkles, ArrowUpRight, Cloud, Cpu, Settings, Layers, Search, Trophy, TrendingUp, Activity, Sigma, Users } from 'lucide-react';
+import { Github, Linkedin, Mail, MapPin, Code, Database, BarChart3, Brain, ChevronDown, ExternalLink, Award, FileText, Menu, X, Shield, Sparkles, ArrowUpRight, Cloud, Cpu, Settings, Layers, Search, Trophy, TrendingUp, Activity, Sigma, Users } from 'lucide-react';
 import { MessageSquare } from "lucide-react";
 
 export default function Portfolio() {
@@ -622,7 +622,7 @@ export default function Portfolio() {
             </p>
           </div>
           
-          <div className={`grid sm:grid-cols-3 gap-6 mb-12 ${visibleSections.has('contact') ? 'animate-slide-up delay-200' : 'opacity-0'}`}>
+          <div className={`grid sm:grid-cols-2 gap-6 mb-12 ${visibleSections.has('contact') ? 'animate-slide-up delay-200' : 'opacity-0'}`}>
             <a href="http://www.linkedin.com/in/madhanjothimani" target="_blank" rel="noopener noreferrer" className="contact-card flex flex-col items-center justify-center gap-4 p-8 rounded-2xl shadow-lg">
               <Linkedin className="contact-icon w-8 h-8" />
               <span className="text-sm text-gray-600 font-semibold">LinkedIn</span>
@@ -630,10 +630,6 @@ export default function Portfolio() {
             <a href="mailto:jothimani.m@northeastern.edu" className="contact-card flex flex-col items-center justify-center gap-4 p-8 rounded-2xl shadow-lg">
               <Mail className="contact-icon w-8 h-8" />
               <span className="text-sm text-gray-600 font-semibold">Email</span>
-            </a>
-            <a href="tel:617-331-8900" className="contact-card flex flex-col items-center justify-center gap-4 p-8 rounded-2xl shadow-lg">
-              <Phone className="contact-icon w-8 h-8" />
-              <span className="text-sm text-gray-600 font-semibold">Phone</span>
             </a>
           </div>
           
