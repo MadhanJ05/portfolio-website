@@ -653,7 +653,7 @@ export default function Portfolio() {
       {/* Footer */}
       <footer className="py-8 text-center border-t border-red-500/10 bg-white">
         <p className="text-sm text-gray-400 hover:text-gray-600 transition-colors">
-          © 2024 <span className="gradient-gold-blue font-semibold">Madhan Jothimani</span> • Built with Next.js & Tailwind CSS
+          © 2026 <span className="gradient-gold-blue font-semibold">Madhan Jothimani</span> • Built with Next.js & Tailwind CSS
         </p>
       </footer>
     </div>
