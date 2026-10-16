@@ -701,12 +701,9 @@ export default function Portfolio() {
         <div className="max-w-4xl mx-auto text-center relative">
           <div className={`mb-12 ${visibleSections.has('contact') ? 'animate-slide-up' : 'opacity-0'}`}>
             <p className="text-red-500 text-sm tracking-widest uppercase mb-3 font-semibold">Get In Touch</p>
-            <h2 className="text-4xl md:text-6xl font-bold text-gray-900 tracking-tight mb-5">
+            <h2 className="text-4xl md:text-6xl font-bold text-gray-900 tracking-tight">
               Let&apos;s Connect
             </h2>
-            <p className="text-gray-600 max-w-xl mx-auto text-lg">
-              Looking for roles where rigorous modeling meets real markets.
-            </p>
           </div>
 
           <div className={`grid sm:grid-cols-2 gap-6 max-w-2xl mx-auto mb-12 ${visibleSections.has('contact') ? 'animate-slide-up delay-200' : 'opacity-0'}`}>
