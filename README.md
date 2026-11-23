@@ -1,36 +1,40 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Madhan Jothimani: portfolio
 
-## Getting Started
+Personal site for quantitative finance and machine learning work. Next.js 16 (App Router), React 19, Tailwind CSS 3 (base reset only; the design system lives in `app/globals.css`). Deployed on Vercel from `main`.
 
-First, run the development server:
+## Run it
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+npm run dev      # http://localhost:3000
+npm run build    # production build (all pages are static)
+npm start        # serve the production build
+npm run lint
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Where things live
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+| Path | What |
+|---|---|
+| `lib/content.js` | All site copy: projects, awards, education, toolkit. Edit text here. |
+| `data/*.json` | Results pulled from the project repos (see below). Every chart reads from these. |
+| `lib/quant.js` | Black-Scholes + Greeks, CRR tree, Monte Carlo (antithetic + control variate), Deflated Sharpe. |
+| `components/MonteCarloHero.js` | Live GBM simulation behind the hero (pauses off-screen; static with reduced motion). |
+| `components/lab/` | Options pricer and overfitting explorer. |
+| `components/charts/` | Hand-built SVG charts: line, bar, table view. |
+| `components/case/` | Case-study pages, served at `/work/[slug]`. |
+| `app/opengraph-image.js` | The 1200×630 share card for LinkedIn and other link previews. |
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Refreshing project data
 
-## Learn More
+The charts and interactives use published results from the `options-lab` and `strategy-search` repos. After those results change:
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+node scripts/sync-data.mjs
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+The interactive numbers are checked against the repos: the textbook preset prices the call at 9.52354, and the explorer reproduces DSR 0.288 at N = 240.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Custom domain
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Once a custom domain is live, set `NEXT_PUBLIC_SITE_URL` (e.g. `https://example.com`) in Vercel so share-card URLs use it. Until then, Vercel's production URL is used automatically.
